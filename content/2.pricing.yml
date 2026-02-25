@@ -1,0 +1,58 @@
+title: A plan for every need
+description: Our pricing is simple and transparent. Choose the plan that best fits your needs and start growing your business today.
+seo:
+  title: Values and Pricing
+  description: Choose the ideal plan for you.
+navigation.icon: i-lucide-credit-card
+plans:
+  - title: Starter
+    description: ""
+    price:
+      month: ""
+      year: ""
+    button:
+      label: Get Started
+      color: neutral
+      variant: subtle
+    features:
+      - ""
+      - ""
+      - ""
+  - title: Pro
+    description: ""
+    price:
+      month: ""
+      year: ""
+    highlight: true
+    scale: true
+    button:
+      label: Get Started
+    features:
+      - ""
+      - ""
+      - ""
+  - title: Enterprise
+    description: ""
+    price:
+      month: Contact us
+      year: Contact us
+    button:
+      label: Contact Sales
+      color: neutral
+      variant: subtle
+    features:
+      - ""
+      - ""
+      - ""
+faq:
+  title: Frequently asked questions
+  description: ""
+  items:
+    - label: ""
+      content: ""
+    - label: ""
+      content: ""
+    - label: ""
+      content: ""
+    - label: ""
+      content: ""
