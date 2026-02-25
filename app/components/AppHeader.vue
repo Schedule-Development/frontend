@@ -1,16 +1,20 @@
 <script setup lang="ts">
 const _route = useRoute()
 
-const items = computed(() => [{
-  label: 'Home',
-  to: '/'
-}, {
-  label: 'Pricing',
-  to: '/pricing'
-}, {
-  label: 'Changelog',
-  to: '/changelog'
-}])
+const items = computed(() => [
+  {
+    label: 'Home',
+    to: '/'
+  },
+  {
+    label: 'Pricing',
+    to: '/pricing'
+  },
+  {
+    label: 'Changelog',
+    to: '/changelog'
+  }
+])
 </script>
 
 <template>

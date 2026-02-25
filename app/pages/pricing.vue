@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('pricing', () => queryCollection('pricing').first())
+const { data: page } = await useAsyncData('pricing', () =>
+  queryCollection('pricing').first()
+)
 
 // --- SEO ---
 const title = page.value?.seo?.title || page.value?.title
@@ -14,22 +16,46 @@ const tabItems = [
 ]
 
 type PricePeriod = { month: string, year: string }
+
+type ButtonProps = {
+  label?: string
+  color?: string
+  variant?: string
+  onClick?: () => void
+}
+
 type Plan = {
   title: string
   description?: string
   price: PricePeriod
-  button?: Record<string, unknown>
+  button?: ButtonProps
   highlight?: boolean
 }
 
 // 2. Dados para os CARDS (UPricingPlans)
+const router = useRouter()
 const cardPlans = computed(() => {
   return page.value?.plans.map((plan: Plan) => {
-    const priceValue = isYearly.value === '1' ? plan.price.year : plan.price.month
+    const priceValue
+      = isYearly.value === '1' ? plan.price.year : plan.price.month
+    const handleClick = () => {
+      router.push({ path: '/checkout', query: { plan: plan.title.toLowerCase(), cycle: isYearly.value } })
+    }
+    const buttonObj: ButtonProps = {
+      label: plan.button?.label || 'Choose',
+      onClick: handleClick,
+      color: plan.button?.color || 'primary',
+      variant: plan.button?.variant || 'solid'
+    }
     return {
       ...plan,
       price: priceValue,
-      billingCycle: priceValue.toString().includes('Contact') ? '' : (isYearly.value === '1' ? '/year' : '/month')
+      billingCycle: priceValue.toString().includes('Contact')
+        ? ''
+        : isYearly.value === '1'
+          ? '/year'
+          : '/month',
+      button: buttonObj
     }
   })
 })
@@ -38,26 +64,29 @@ const cardPlans = computed(() => {
 <template>
   <div
     v-if="page"
-    class="space-y-24 mb-24"
+    class="pricing-page space-y-8 mb-12"
   >
     <UPageHero
+      class="pb-8"
       :title="page.title"
       :description="page.description"
     />
     <UDivider label="OR" />
 
-    <UContainer>
-      <div class="flex justify-center -mt-8 mb-6">
+    <UContainer class="-mt-16">
+      <div class="flex justify-center -mt-20 mb-4">
         <UTabs
           v-model="isYearly"
           :items="tabItems"
           class="w-48"
         />
       </div>
-      <UPricingPlans
-        scale
-        :plans="cardPlans"
-      />
+      <div class="pricing-plans-tight">
+        <UPricingPlans
+          scale
+          :plans="cardPlans"
+        />
+      </div>
     </UContainer>
 
     <UPageSection

@@ -1,9 +1,15 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: post } = await useAsyncData(route.path, () => queryCollection('posts').path(route.path).first())
+const { data: post } = await useAsyncData(route.path, () =>
+  queryCollection('posts').path(route.path).first()
+)
 if (!post.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Post not found',
+    fatal: true
+  })
 }
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
@@ -45,7 +51,13 @@ if (post.value.image?.src) {
           variant="subtle"
         />
         <span class="text-muted">&middot;</span>
-        <time class="text-muted">{{ new Date(post.date).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) }}</time>
+        <time class="text-muted">{{
+          new Date(post.date).toLocaleDateString("en", {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+          })
+        }}</time>
       </template>
 
       <div class="flex flex-wrap items-center gap-3 mt-4">

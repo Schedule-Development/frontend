@@ -1,38 +1,57 @@
 <script setup lang="ts">
-const columns = [{
-  label: 'Resources',
-  children: [{
-    label: 'Help center'
-  }, {
-    label: 'Docs'
-  }, {
-    label: 'Roadmap'
-  }, {
-    label: 'Changelog'
-  }]
-}, {
-  label: 'Features',
-  children: [{
-    label: 'Affiliates'
-  }, {
-    label: 'Portal'
-  }, {
-    label: 'Jobs'
-  }, {
-    label: 'Sponsors'
-  }]
-}, {
-  label: 'Company',
-  children: [{
-    label: 'About'
-  }, {
-    label: 'Pricing'
-  }, {
-    label: 'Careers'
-  }, {
-    label: 'Blog'
-  }]
-}]
+const columns = [
+  {
+    label: 'Resources',
+    children: [
+      {
+        label: 'Help center'
+      },
+      {
+        label: 'Docs'
+      },
+      {
+        label: 'Roadmap'
+      },
+      {
+        label: 'Changelog'
+      }
+    ]
+  },
+  {
+    label: 'Features',
+    children: [
+      {
+        label: 'Affiliates'
+      },
+      {
+        label: 'Portal'
+      },
+      {
+        label: 'Jobs'
+      },
+      {
+        label: 'Sponsors'
+      }
+    ]
+  },
+  {
+    label: 'Company',
+    children: [
+      {
+        label: 'About'
+      },
+      {
+        label: 'Pricing'
+      },
+      {
+        label: 'Careers'
+      },
+      {
+        label: 'Blog'
+      }
+    ]
+  }
+]
 
 const toast = useToast()
 
