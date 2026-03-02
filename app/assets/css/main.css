@@ -7,43 +7,38 @@
 @theme static {
   --font-sans: "Roboto Slab", serif;
 
-  /* Blue Lagoon inspired palette */
-  --color-lagoon-50: #f4f7f9;
-  --color-lagoon-100: #e3eff3;
-  --color-lagoon-200: #c8e0e9;
-  --color-lagoon-300: #a1c8d6;
-  --color-lagoon-400: #75abbc;
-  --color-lagoon-500: #578fa2;
-  --color-lagoon-600: #46768a;
-  --color-lagoon-700: #3b6071;
-  --color-lagoon-800: #35505e;
-  --color-lagoon-900: #2f434f;
-  --color-lagoon-950: #1d2c35;
+  /* Custom App Palette Based on User Request */
+  --color-color1: #02fcf3; /* Cyan Accent */
+  --color-color2: #a9e4cf; /* Mint Green */
+  --color-color3: #cae0c8; /* Pale Green */
+  --color-color4: #deddc4; /* Khaki Beige */
+  --color-color5: #e8e7d2; /* Ivory */
 
-  /* Silica White - for warm accents */
-  --color-silica-50: #ffffff;
-  --color-silica-100: #fafafa;
-  --color-silica-200: #f5f5f5;
-  --color-silica-300: #e5e5e5;
-  --color-silica-400: #d4d4d4;
-  --color-silica-500: #737373;
-  --color-silica-900: #171717;
+  /* Brand Primary Scale (built around Color 1 - #02fcf3) */
+  --color-brand-50: #e0fffe;
+  --color-brand-100: #b3fffc;
+  --color-brand-200: #80fff9;
+  --color-brand-300: #4dfcf6;
+  --color-brand-400: #26fcf4;
+  --color-brand-500: #02fcf3; /* Color 1 */
+  --color-brand-600: #00d9d0;
+  --color-brand-700: #00b3ac;
+  --color-brand-800: #008c87;
+  --color-brand-900: #006662;
+  --color-brand-950: #003d3b;
 
-  /* Lava Black - for deep contrast */
-  --color-lava-900: #121212;
-  --color-lava-950: #0a0a0a;
-
-  --color-green-50: #effdf5;
-  --color-green-100: #d9fbe8;
-  --color-green-200: #b3f5d1;
-  --color-green-300: #75edae;
-  --color-green-400: #00dc82;
-  --color-green-500: #00c16a;
-  --color-green-600: #00a155;
-  --color-green-700: #007f45;
-  --color-green-800: #016538;
-  --color-green-900: #0a5331;
-  --color-green-950: #052e16;
+  /* Brand Neutral Scale (built around Color 2, 3, 4, 5) */
+  --color-nature-50: #fbfbfc;
+  --color-nature-100: #f4f5f5;
+  --color-nature-200: #e8e7d2; /* Color 5 - Ivory */
+  --color-nature-300: #deddc4; /* Color 4 - Khaki Beige */
+  --color-nature-400: #cae0c8; /* Color 3 - Pale Green */
+  --color-nature-500: #a9e4cf; /* Color 2 - Mint Green */
+  --color-nature-600: #88b7a6;
+  --color-nature-700: #688a7c;
+  --color-nature-800: #4a6358;
+  --color-nature-900: #2e3d37;
+  --color-nature-950: #171f1c;
 
   /* Animations */
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
@@ -80,43 +75,37 @@
   }
 }
 
-.dark {
-  --ui-bg: var(--color-lagoon-950);
-  --ui-bg-muted: var(--color-lagoon-900);
-  --ui-bg-elevated: var(--color-lagoon-900);
-  --ui-bg-accented: var(--color-lagoon-800);
+/* Force specific colors in root and body when rendering the layout */
+:root {
+  --ui-bg: var(--color-nature-50);
+  --ui-bg-muted: var(--color-nature-200); 
+  --ui-bg-elevated: #ffffff;
+  --ui-bg-accented: var(--color-nature-100);
+  --ui-border: var(--color-nature-300);
+  --ui-border-accented: var(--color-nature-400);
 }
 
-/* Force light, clean aesthetic even if dark mode flickers, but ideally we are in light mode now */
-:root {
-  --ui-bg: #ffffff;
-  --ui-bg-muted: var(--color-lagoon-50); 
-  --ui-bg-elevated: #ffffff;
-  --ui-bg-accented: var(--color-lagoon-50);
-  --ui-border: var(--color-lagoon-200);
-  --ui-border-accented: var(--color-lagoon-300);
+.dark {
+  --ui-bg: var(--color-nature-950);
+  --ui-bg-muted: var(--color-nature-900);
+  --ui-bg-elevated: var(--color-nature-900);
+  --ui-bg-accented: var(--color-nature-800);
+  --ui-border: var(--color-nature-800);
 }
 
 body {
   background-color: var(--ui-bg);
-  background-image: linear-gradient(to bottom, #ffffff 0%, var(--color-lagoon-50) 100%);
   min-height: 100vh;
-  font-weight: 300;
-  letter-spacing: 0.02em;
-  color: var(--color-lagoon-900); /* Dark text for contrast */
+  color: var(--color-nature-950);
 }
 
-/* Clean up cards for that glass/water effect */
-.u-card, .card {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+.dark body {
+  color: var(--color-nature-50);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-lagoon-950);
-  font-weight: 400;
+  color: inherit;
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 
