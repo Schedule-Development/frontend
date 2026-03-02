@@ -1,62 +1,63 @@
-title: Choose your experience
-description: Select the package that best suits your journey to relaxation and wellness.
+title: Planos transparentes para barbeiros de elite
+description: Sem taxas escondidas. Escolha o plano ideal para alavancar a sua barbearia hoje mesmo.
 plans:
-  - title: Comfort
-    description: The essential Blue Lagoon experience.
+  - title: Iniciante
+    description: O essencial para organizar a sua agenda e dizer adeus ao papel.
     price:
-      month: $69
-      year: $690
+      month: 19€
+      year: 190€
     features:
-      - Entrance to the Lagoon
-      - Silica Mud Mask
-      - Use of towel
-      - 1st drink of your choice
+      - Agenda online 24/7
+      - Lembretes por Email
+      - Até 100 agendamentos/mês
+      - Suporte por email
     button:
-      label: Book Comfort
+      label: Começar Trial Grátis
       variant: soft
 
-  - title: Premium
-    description: Our most popular package with extra touches.
+  - title: Profissional
+    description: O nosso pacote mais popular com automação de WhatsApp.
     price:
-      month: $89
-      year: $890
+      month: 29€
+      year: 290€
     highlight: true
     scale: true
+    highlight_text: "Mais Popular"
     features:
-      - Entrance to the Lagoon
-      - Silica Mud Mask
-      - Use of towel
-      - 1st drink of your choice
-      - Second mask of choice
-      - Slippers & Bathrobe
-      - Glass of sparkling wine
+      - Agendamentos ilimitados
+      - Lembretes por WhatsApp (100% automático)
+      - Dashboard Financeiro
+      - Fecho de Caixa diário
+      - Página de preçário personalizável
+      - Suporte prioritário 24/7
     button:
-      label: Book Premium
+      label: Escolher Profissional
 
-  - title: Signature
-    description: The ultimate luxury experience with exclusive access.
+  - title: Barbearia (Equipa)
+    description: Para espaços com 3 ou mais profissionais na mesma agenda.
     price:
-      month: $299
-      year: $2990
+      month: 59€
+      year: 590€
     features:
-      - All Premium benefits
-      - Retreat Spa access (5 hours)
-      - Private changing suite
-      - The Blue Lagoon Ritual
-      - Skin care amenities
+      - Todas as funções do Profissional
+      - Múltiplos calendários (Até 5 barbeiros)
+      - Link dedicado por profissional
+      - Gestão de Comissões
+      - Integração API/n8n
     button:
-      label: Book Signature
+      label: Escolher Equipa
       variant: soft
 
 faq:
-  title: Frequently Asked Questions
-  description: Everything you need to know about our pricing plans
+  title: Perguntas Frequentes
+  description: Tudo o que precisa de saber sobre os nossos planos.
   items:
-    - label: Can I switch plans later?
-      content: Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.
-    - label: What payment methods do you accept?
-      content: We accept all major credit cards (Visa, Mastercard, American Express) and PayPal.
-    - label: Is there a free trial?
-      content: Yes, we offer a 14-day free trial for all new users. No credit card required.
-    - label: Can I cancel my subscription?
-      content: Absolutely. You can cancel your subscription at any time from your account settings. No questions asked.
+    - label: Posso alterar o meu plano mais tarde?
+      content: Sim! Pode fazer upgrade ou downgrade em qualquer momento a partir das definições da sua conta.
+    - label: Que métodos de pagamento aceitam?
+      content: Aceitamos cartões de crédito/débito via Stripe, MBWay e Referência Multibanco.
+    - label: Preciso de usar cartão de crédito no Trial?
+      content: Não. Oferecemos 14 dias grátis para experimentar, sem pedir qualquer detalhe de pagamento até lá.
+    - label: Existe limite para lembretes de WhatsApp?
+      content: Nos planos Profissional e Equipa, os lembretes para clientes são ilimitados e funcionam automaticamente sem precisar que tenha o seu telemóvel ligado.
+

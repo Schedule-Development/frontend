@@ -33,13 +33,22 @@ const isScrolled = computed(() => y.value > 20)
           : 'w-full bg-transparent h-20'
       ]"
     >
-      <div class="flex items-center gap-4 transition-colors duration-300" :class="isScrolled ? 'text-white' : 'text-gray-900 dark:text-white'">
-        <NuxtLink to="/" class="flex items-center gap-2">
+      <div
+        class="flex items-center gap-4 transition-colors duration-300"
+        :class="isScrolled ? 'text-white' : 'text-gray-900 dark:text-white'"
+      >
+        <NuxtLink
+          to="/"
+          class="flex items-center gap-2"
+        >
           <AppLogo class="w-auto h-8 shrink-0" />
         </NuxtLink>
       </div>
 
-      <div class="hidden md:flex items-center gap-8 text-sm font-semibold transition-colors duration-300" :class="isScrolled ? 'text-gray-200' : 'text-gray-900 dark:text-gray-200'">
+      <div
+        class="hidden md:flex items-center gap-8 text-sm font-semibold transition-colors duration-300"
+        :class="isScrolled ? 'text-gray-200' : 'text-gray-900 dark:text-gray-200'"
+      >
         <NuxtLink
           v-for="item in items"
           :key="item.to"

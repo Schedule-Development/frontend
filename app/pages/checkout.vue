@@ -40,7 +40,7 @@ const cardBrands = [
   { label: 'Visa', src: '/card-icons/visa.svg' },
   { label: 'Mastercard', src: '/card-icons/mastercard.svg' },
   { label: 'Elo', src: '/card-icons/elo.svg' },
-  { label: 'Amex', src: '/card-icons/amex.svg' },
+  { label: 'Amex', src: '/card-icons/amex.svg' }
 ]
 
 function submit() {

@@ -7,38 +7,31 @@
 @theme static {
   --font-sans: "Roboto Slab", serif;
 
-  /* Custom App Palette Based on User Request */
-  --color-color1: #02fcf3; /* Cyan Accent */
-  --color-color2: #a9e4cf; /* Mint Green */
-  --color-color3: #cae0c8; /* Pale Green */
-  --color-color4: #deddc4; /* Khaki Beige */
-  --color-color5: #e8e7d2; /* Ivory */
+  /* App Palette "High-End Pika" (Apple / Premium SaaS Style) */
+  --color-brand-50: #f0f4fa;
+  --color-brand-100: #dce5f2;
+  --color-brand-200: #b9cde5;
+  --color-brand-300: #8baad4;
+  --color-brand-400: #567EBB; /* Destaques / Ícones */
+  --color-brand-500: #2B4C7E; /* Botão Primary (CTA) */
+  --color-brand-600: #223c63;
+  --color-brand-700: #1a2d4a;
+  --color-brand-800: #132136;
+  --color-brand-900: #0d1726;
+  --color-brand-950: #080d16;
 
-  /* Brand Primary Scale (built around Color 1 - #02fcf3) */
-  --color-brand-50: #e0fffe;
-  --color-brand-100: #b3fffc;
-  --color-brand-200: #80fff9;
-  --color-brand-300: #4dfcf6;
-  --color-brand-400: #26fcf4;
-  --color-brand-500: #02fcf3; /* Color 1 */
-  --color-brand-600: #00d9d0;
-  --color-brand-700: #00b3ac;
-  --color-brand-800: #008c87;
-  --color-brand-900: #006662;
-  --color-brand-950: #003d3b;
-
-  /* Brand Neutral Scale (built around Color 2, 3, 4, 5) */
-  --color-nature-50: #fbfbfc;
-  --color-nature-100: #f4f5f5;
-  --color-nature-200: #e8e7d2; /* Color 5 - Ivory */
-  --color-nature-300: #deddc4; /* Color 4 - Khaki Beige */
-  --color-nature-400: #cae0c8; /* Color 3 - Pale Green */
-  --color-nature-500: #a9e4cf; /* Color 2 - Mint Green */
-  --color-nature-600: #88b7a6;
-  --color-nature-700: #688a7c;
-  --color-nature-800: #4a6358;
-  --color-nature-900: #2e3d37;
-  --color-nature-950: #171f1c;
+  /* Ice Gray to Almost Black Scale */
+  --color-nature-50: #DCE0E6; /* Background Principal "Cinza Gelo" */
+  --color-nature-100: #d3d8df;
+  --color-nature-200: #bfc6cf;
+  --color-nature-300: #a4adba;
+  --color-nature-400: #828e9f;
+  --color-nature-500: #606D80; /* Bordas / Divisores */
+  --color-nature-600: #4d5766;
+  --color-nature-700: #3c4450;
+  --color-nature-800: #2d333c;
+  --color-nature-900: #22262d;
+  --color-nature-950: #1F1F20; /* Texto Principal */
 
   /* Animations */
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
@@ -47,46 +40,32 @@
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulseSlow {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
-/* Force specific colors in root and body when rendering the layout */
+/* Base Light Mode - High End Look */
 :root {
-  --ui-bg: var(--color-nature-50);
-  --ui-bg-muted: var(--color-nature-200); 
+  --ui-bg: var(--color-nature-50); /* #DCE0E6 */
+  --ui-bg-muted: var(--color-nature-100); 
   --ui-bg-elevated: #ffffff;
-  --ui-bg-accented: var(--color-nature-100);
+  --ui-bg-accented: var(--color-brand-50);
   --ui-border: var(--color-nature-300);
   --ui-border-accented: var(--color-nature-400);
 }
 
 .dark {
-  --ui-bg: var(--color-nature-950);
+  --ui-bg: var(--color-nature-950); /* #1F1F20 */
   --ui-bg-muted: var(--color-nature-900);
   --ui-bg-elevated: var(--color-nature-900);
   --ui-bg-accented: var(--color-nature-800);
@@ -105,8 +84,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: inherit;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* Smooth scrolling */

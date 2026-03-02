@@ -12,12 +12,12 @@ export default defineNuxtConfig({
   devtools: {
     enabled: false
   },
-  
+
+  css: ['~/assets/css/main.css'],
+
   colorMode: {
     preference: 'light'
   },
-
-  css: ['~/assets/css/main.css'],
 
   routeRules: {
     '/docs': { redirect: '/docs/getting-started', prerender: false }
