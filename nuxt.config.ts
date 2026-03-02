@@ -10,7 +10,11 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    enabled: true
+    enabled: false
+  },
+  
+  colorMode: {
+    preference: 'light'
   },
 
   css: ['~/assets/css/main.css'],

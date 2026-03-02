@@ -6,19 +6,17 @@ seo:
 navigation: false
 hero:
   links:
-    - label: Conheça nossos diferenciais
+    - label: Discover our features
       icon: i-lucide-arrow-right
       trailing: true
-      to: https://ui.nuxt.com/docs/getting-started/installation/nuxt
-      target: _blank
+      to: /#features
       size: xl
-    - label: Quero contratar
-      icon: i-simple-icons-stackoverflow
+    - label: Get Started
+      icon: i-lucide-shopping-cart
       size: xl
-      color: neutral
-      variant: subtle
-      to: https://github.com/nuxt-ui-templates/saas
-      target: _blank
+      color: primary
+      variant: soft
+      to: /pricing
 sections:
   - title: Powered by Nuxt UI Components
     description: Access the complete Nuxt UI component library with 100+ beautifully styled, accessible, and customizable Vue components. Everything you need to build professional SaaS applications.

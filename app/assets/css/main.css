@@ -1,10 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "@nuxt/ui";
 
 @source "../../../content/**/*";
 
 @theme static {
-  --font-sans: "Public Sans", sans-serif;
+  --font-sans: "Roboto Slab", serif;
+
+  /* Blue Lagoon inspired palette */
+  --color-lagoon-50: #f4f7f9;
+  --color-lagoon-100: #e3eff3;
+  --color-lagoon-200: #c8e0e9;
+  --color-lagoon-300: #a1c8d6;
+  --color-lagoon-400: #75abbc;
+  --color-lagoon-500: #578fa2;
+  --color-lagoon-600: #46768a;
+  --color-lagoon-700: #3b6071;
+  --color-lagoon-800: #35505e;
+  --color-lagoon-900: #2f434f;
+  --color-lagoon-950: #1d2c35;
+
+  /* Silica White - for warm accents */
+  --color-silica-50: #ffffff;
+  --color-silica-100: #fafafa;
+  --color-silica-200: #f5f5f5;
+  --color-silica-300: #e5e5e5;
+  --color-silica-400: #d4d4d4;
+  --color-silica-500: #737373;
+  --color-silica-900: #171717;
+
+  /* Lava Black - for deep contrast */
+  --color-lava-900: #121212;
+  --color-lava-950: #0a0a0a;
 
   --color-green-50: #effdf5;
   --color-green-100: #d9fbe8;
@@ -17,13 +44,85 @@
   --color-green-800: #016538;
   --color-green-900: #0a5331;
   --color-green-950: #052e16;
+
+  /* Animations */
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .dark {
-  --ui-bg: var(--ui-color-neutral-950);
-  --ui-bg-muted: var(--ui-color-neutral-900);
-  --ui-bg-elevated: var(--ui-color-neutral-900);
-  --ui-bg-accented: var(--ui-color-neutral-800);
+  --ui-bg: var(--color-lagoon-950);
+  --ui-bg-muted: var(--color-lagoon-900);
+  --ui-bg-elevated: var(--color-lagoon-900);
+  --ui-bg-accented: var(--color-lagoon-800);
+}
+
+/* Force light, clean aesthetic even if dark mode flickers, but ideally we are in light mode now */
+:root {
+  --ui-bg: #ffffff;
+  --ui-bg-muted: var(--color-lagoon-50); 
+  --ui-bg-elevated: #ffffff;
+  --ui-bg-accented: var(--color-lagoon-50);
+  --ui-border: var(--color-lagoon-200);
+  --ui-border-accented: var(--color-lagoon-300);
+}
+
+body {
+  background-color: var(--ui-bg);
+  background-image: linear-gradient(to bottom, #ffffff 0%, var(--color-lagoon-50) 100%);
+  min-height: 100vh;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-lagoon-900); /* Dark text for contrast */
+}
+
+/* Clean up cards for that glass/water effect */
+.u-card, .card {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-lagoon-950);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Pricing page visual tweaks */
@@ -38,14 +137,31 @@
 .pricing-page .pricing-plans-tight .card,
 .pricing-page .pricing-plans-tight .pricing-card,
 .pricing-page .pricing-plans-tight .u-pricing-plan {
-  border-width: 1px !important;
-  border-color: rgba(148, 163, 184, 0.06) !important;
-  border-radius: 0.5rem !important;
-  box-shadow: none !important;
+  border: 1px solid var(--color-lagoon-200) !important;
+  border-radius: 1rem !important; /* More rounded like pebbles */
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px -10px rgba(87, 143, 162, 0.2) !important; /* Soft lagoon shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pricing-page .pricing-plans-tight .u-card:focus,
-.pricing-page .pricing-plans-tight .pricing-card:focus,
-.pricing-page .pricing-plans-tight .u-pricing-plan:focus {
-  outline-offset: 2px;
+.pricing-page .pricing-plans-tight .u-pricing-plan--highlight,
+.pricing-page .pricing-plans-tight .u-card--highlight {
+  border-color: var(--color-lagoon-400) !important;
+  box-shadow: 0 20px 40px -10px rgba(87, 143, 162, 0.4) !important;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-lagoon-50) 100%) !important;
+  transform: scale(1.05); /* Ensure scale perception */
+}
+
+/* Feature list bullets with lagoon color */
+.pricing-page .pricing-plans-tight ul li::before {
+  color: var(--color-lagoon-500) !important;
+}
+
+/* Button override for pricing to ensure they pop */
+.pricing-page .pricing-plans-tight button {
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 9999px; /* Pill buttons */
 }

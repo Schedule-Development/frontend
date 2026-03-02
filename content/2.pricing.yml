@@ -1,58 +1,62 @@
-title: A plan for every need
-description: Our pricing is simple and transparent. Choose the plan that best fits your needs and start growing your business today.
-seo:
-  title: Values and Pricing
-  description: Choose the ideal plan for you.
-navigation.icon: i-lucide-credit-card
+title: Choose your experience
+description: Select the package that best suits your journey to relaxation and wellness.
 plans:
-  - title: Starter
-    description: ""
+  - title: Comfort
+    description: The essential Blue Lagoon experience.
     price:
-      month: ""
-      year: ""
-    button:
-      label: Get Started
-      color: neutral
-      variant: subtle
+      month: $69
+      year: $690
     features:
-      - ""
-      - ""
-      - ""
-  - title: Pro
-    description: ""
+      - Entrance to the Lagoon
+      - Silica Mud Mask
+      - Use of towel
+      - 1st drink of your choice
+    button:
+      label: Book Comfort
+      variant: soft
+
+  - title: Premium
+    description: Our most popular package with extra touches.
     price:
-      month: ""
-      year: ""
+      month: $89
+      year: $890
     highlight: true
     scale: true
-    button:
-      label: Get Started
     features:
-      - ""
-      - ""
-      - ""
-  - title: Enterprise
-    description: ""
+      - Entrance to the Lagoon
+      - Silica Mud Mask
+      - Use of towel
+      - 1st drink of your choice
+      - Second mask of choice
+      - Slippers & Bathrobe
+      - Glass of sparkling wine
+    button:
+      label: Book Premium
+
+  - title: Signature
+    description: The ultimate luxury experience with exclusive access.
     price:
-      month: Contact us
-      year: Contact us
-    button:
-      label: Contact Sales
-      color: neutral
-      variant: subtle
+      month: $299
+      year: $2990
     features:
-      - ""
-      - ""
-      - ""
+      - All Premium benefits
+      - Retreat Spa access (5 hours)
+      - Private changing suite
+      - The Blue Lagoon Ritual
+      - Skin care amenities
+    button:
+      label: Book Signature
+      variant: soft
+
 faq:
-  title: Frequently asked questions
-  description: ""
+  title: Frequently Asked Questions
+  description: Everything you need to know about our pricing plans
   items:
-    - label: ""
-      content: ""
-    - label: ""
-      content: ""
-    - label: ""
-      content: ""
-    - label: ""
-      content: ""
+    - label: Can I switch plans later?
+      content: Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.
+    - label: What payment methods do you accept?
+      content: We accept all major credit cards (Visa, Mastercard, American Express) and PayPal.
+    - label: Is there a free trial?
+      content: Yes, we offer a 14-day free trial for all new users. No credit card required.
+    - label: Can I cancel my subscription?
+      content: Absolutely. You can cancel your subscription at any time from your account settings. No questions asked.

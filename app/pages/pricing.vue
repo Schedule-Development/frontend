@@ -35,7 +35,8 @@ type Plan = {
 // 2. Dados para os CARDS (UPricingPlans)
 const router = useRouter()
 const cardPlans = computed(() => {
-  return page.value?.plans.map((plan: Plan) => {
+  if (!page.value?.plans) return []
+  return page.value.plans.map((plan: Plan) => {
     const priceValue
       = isYearly.value === '1' ? plan.price.year : plan.price.month
     const handleClick = () => {
@@ -71,7 +72,7 @@ const cardPlans = computed(() => {
       :title="page.title"
       :description="page.description"
     />
-    <UDivider label="OR" />
+    <USeparator label="OR" />
 
     <UContainer class="-mt-16">
       <div class="flex justify-center -mt-20 mb-4">
