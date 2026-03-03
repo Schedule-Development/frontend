@@ -35,7 +35,7 @@ const isYearly = ref(false)
 
         <!-- 2. Micro-interações na Troca Mensal/Anual com Badge -->
         <div class="mt-12 flex items-center justify-center gap-4">
-          <span :class="['text-sm font-bold transition-colors', !isYearly ? 'text-[#1F1F20]' : 'text-[#606D80]']">Mensal</span>
+          <span :class="['text-sm font-bold transition-colors', !isYearly ? 'text-[#1F1F20]' : 'text-[#606D80]']">Monthly</span>
 
           <button
             class="relative inline-flex h-8 w-16 items-center rounded-full transition-colors duration-300 focus:outline-none"
@@ -49,14 +49,14 @@ const isYearly = ref(false)
           </button>
 
           <div class="relative flex items-center gap-3">
-            <span :class="['text-sm font-bold transition-colors', isYearly ? 'text-[#1F1F20]' : 'text-[#606D80]']">Anual</span>
+            <span :class="['text-sm font-bold transition-colors', isYearly ? 'text-[#1F1F20]' : 'text-[#606D80]']">Yearly</span>
             <!-- Badge Save 20% com pulso -->
             <div class="absolute left-full ml-4 animate-pulse">
               <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#567EBB]/10 text-[#2B4C7E] text-xs font-bold whitespace-nowrap border border-[#567EBB]/20 shadow-sm relative">
                 <UIcon
                   name="i-heroicons-sparkles"
                   class="w-3.5 h-3.5"
-                /> Poupe 2 meses
+                /> Save 2 months
                 <div class="absolute inset-0 bg-[#DCE0E6]/20 blur-[1px] rounded-full pointer-events-none" />
               </span>
             </div>

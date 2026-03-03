@@ -1,63 +1,63 @@
-title: Planos transparentes para barbeiros de elite
-description: Sem taxas escondidas. Escolha o plano ideal para alavancar a sua barbearia hoje mesmo.
+title: Transparent plans for elite barbers
+description: No hidden fees. Choose the ideal plan to boost your barbershop today.
 plans:
-  - title: Iniciante
-    description: O essencial para organizar a sua agenda e dizer adeus ao papel.
+  - title: Beginner
+    description: The essentials to organize your schedule and say goodbye to paper.
     price:
       month: 19€
       year: 190€
     features:
-      - Agenda online 24/7
-      - Lembretes por Email
-      - Até 100 agendamentos/mês
-      - Suporte por email
+      - Online schedule 24/7
+      - Email reminders
+      - Up to 100 appointments/month
+      - Email support
     button:
-      label: Começar Trial Grátis
+      label: Start Free Trial
       variant: soft
 
-  - title: Profissional
-    description: O nosso pacote mais popular com automação de WhatsApp.
+  - title: Professional
+    description: Our most popular package with WhatsApp automation.
     price:
       month: 29€
       year: 290€
     highlight: true
     scale: true
-    highlight_text: "Economize 2 meses"
+    highlight_text: "Save 2 months"
     features:
-      - Agendamentos ilimitados
-      - Lembretes por WhatsApp (100% automático)
-      - Dashboard Financeiro
-      - Fecho de Caixa diário
-      - Página de preçário personalizável
-      - Suporte prioritário 24/7
+      - Unlimited appointments
+      - WhatsApp reminders (100% automatic)
+      - Financial Dashboard
+      - Daily cash closure
+      - Customizable price list page
+      - 24/7 priority support
     button:
-      label: Escolher Profissional
+      label: Choose Professional
 
-  - title: Barbearia (Equipa)
-    description: Para espaços com 3 ou mais profissionais na mesma agenda.
+  - title: Barbershop (Team)
+    description: For spaces with 3 or more professionals on the same schedule.
     price:
       month: 59€
       year: 590€
     features:
-      - Todas as funções do Profissional
-      - Múltiplos calendários (Até 5 barbeiros)
-      - Link dedicado por profissional
-      - Gestão de Comissões
-      - Integração API/n8n
+      - All Professional features
+      - Multiple calendars (Up to 5 barbers)
+      - Dedicated link per professional
+      - Commission management
+      - API/n8n integration
     button:
-      label: Escolher Equipa
+      label: Choose Team
       variant: soft
 
 faq:
-  title: Perguntas Frequentes
-  description: Tudo o que precisa de saber sobre os nossos planos.
+  title: Frequently Asked Questions
+  description: Everything you need to know about our plans.
   items:
-    - label: Posso alterar o meu plano mais tarde?
-      content: Sim! Pode fazer upgrade ou downgrade em qualquer momento a partir das definições da sua conta.
-    - label: Que métodos de pagamento aceitam?
-      content: Aceitamos cartões de crédito/débito via Stripe, MBWay e Referência Multibanco.
-    - label: Preciso de usar cartão de crédito no Trial?
-      content: Não. Oferecemos 14 dias grátis para experimentar, sem pedir qualquer detalhe de pagamento até lá.
-    - label: Existe limite para lembretes de WhatsApp?
-      content: Nos planos Profissional e Equipa, os lembretes para clientes são ilimitados e funcionam automaticamente sem precisar que tenha o seu telemóvel ligado.
+    - label: Can I change my plan later?
+      content: Yes! You can upgrade or downgrade at any time from your account settings.
+    - label: What payment methods do you accept?
+      content: We accept credit/debit cards via Stripe, MBWay and Multibanco reference.
+    - label: Do I need to use a credit card for the Trial?
+      content: No. We offer 14 days free to try, without asking for any payment details until then.
+    - label: Is there a limit for WhatsApp reminders?
+      content: In Professional and Team plans, reminders to clients are unlimited and work automatically without needing your phone turned on.
 

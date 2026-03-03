@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const title = 'O Aplicativo para Barbeiros que Querem Crescer'
-const description = 'A gestão automática, os agendamentos fáceis e o controlo financeiro numa única plataforma inteligente. Tudo o que precisa para focar naquilo que faz melhor: transformar o visual dos seus clientes.'
+const title = 'The App for Barbers Who Want to Grow'
+const description = 'Automatic management, easy scheduling and financial control in a single intelligent platform. Everything you need to focus on what you do best: transforming your clients\' looks.'
 
 useSeoMeta({
   titleTemplate: '',
@@ -54,11 +54,11 @@ const vSlideUp = {
             name="i-heroicons-sparkles"
             class="w-4 h-4 text-[#606D80]"
           />
-          <span class="opacity-95 text-[#606D80]">A revolução tecnológica da sua Barbearia</span>
+          <span class="opacity-95 text-[#606D80]">The technological revolution of your Barbershop</span>
         </div>
 
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-[#1F1F20] to-[#2B4C7E]">
-          O Aplicativo para Barbearias <br class="hidden md:block"> que querem crescer.
+          The App for Barbershops <br class="hidden md:block"> that want to grow.
         </h1>
 
         <p class="text-lg md:text-xl text-[#606D80] mb-10 max-w-3xl mx-auto leading-[1.8]">
@@ -71,7 +71,7 @@ const vSlideUp = {
             class="rounded-full font-bold px-8 shadow-lg bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] hover:shadow-[0_10px_20px_-10px_rgba(43,76,126,0.8)] hover:scale-105 transition-all"
             to="/signup"
           >
-            Começar Teste Grátis
+            Start Free Trial
           </UButton>
           <UButton
             size="xl"
@@ -79,7 +79,7 @@ const vSlideUp = {
             class="rounded-full font-semibold px-8 text-[#1F1F20] hover:bg-[#606D80]/10"
             to="#funcionalidades"
           >
-            Ver Funcionalidades <UIcon
+            View Features <UIcon
               name="i-heroicons-arrow-right"
               class="w-4 h-4 ml-1"
             />
@@ -148,10 +148,10 @@ const vSlideUp = {
             </div>
             <div>
               <p class="text-sm font-bold text-[#1F1F20]">
-                Corte com Barba
+                Haircut with Beard
               </p>
               <p class="text-xs font-medium text-[#606D80]">
-                Hoje, 14:30 - André F.
+                Today, 14:30 - André F.
               </p>
             </div>
           </div>
@@ -171,7 +171,7 @@ const vSlideUp = {
                 + 35,00 €
               </p>
               <p class="text-xs font-medium text-[#606D80]">
-                Pagamento concluído
+                Payment completed
               </p>
             </div>
           </div>
@@ -183,7 +183,7 @@ const vSlideUp = {
     <section class="py-12 border-y border-[#606D80]/10 bg-transparent">
       <div class="max-w-7xl mx-auto px-6 text-center">
         <p class="text-xs font-bold text-[#606D80] tracking-[0.2em] uppercase mb-8">
-          Mais de 500 profissionais confiam em nós
+          More than 500 professionals trust us
         </p>
         <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 text-[#606D80] hover:[&>*]:text-[#1F1F20] transition-colors duration-500">
           <h3 class="text-2xl font-black flex items-center gap-2 transition-colors duration-300">
@@ -217,12 +217,12 @@ const vSlideUp = {
         v-slide-up
         class="text-center mb-20"
       >
-        <span class="text-[#567EBB] font-bold tracking-wider text-sm uppercase mb-3 block">Ferramentas Essenciais</span>
+        <span class="text-[#567EBB] font-bold tracking-wider text-sm uppercase mb-3 block">Essential Tools</span>
         <h2 class="text-4xl md:text-5xl font-extrabold text-[#1F1F20] tracking-tight">
-          Tudo para manter a cadeira cheia.
+          Everything to keep the chair full.
         </h2>
         <p class="text-lg text-[#606D80] mt-5 max-w-2xl mx-auto">
-          Deixámos a parte burocrática da gestão para os algoritmos. O seu único trabalho vai ser ligar a máquina e surpreender clientes.
+          We left the bureaucratic part of management to the algorithms. Your only job will be to turn on the machine and surprise clients.
         </p>
       </div>
 
@@ -239,10 +239,10 @@ const vSlideUp = {
             />
           </div>
           <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
-            Agenda Inteligente
+            Smart Schedule
           </h4>
           <p class="text-[#606D80] font-medium leading-relaxed max-w-lg">
-            Os seus clientes acedem ao seu link próprio e marcam nos horários disponíveis. Sem chamadas na hora errada, sem choques de horários ou falhas na comunicação.
+            Your clients access your own link and book in available times. No calls at the wrong time, no schedule clashes or communication failures.
           </p>
         </div>
 
@@ -258,10 +258,10 @@ const vSlideUp = {
             />
           </div>
           <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
-            Lembretes WhatsApp
+            WhatsApp Reminders
           </h4>
           <p class="text-[#606D80] font-medium leading-relaxed">
-            Reduza faltas em 90%. Envio automático para o cliente no dia do corte (ou agendamento).
+            Reduce no-shows by 90%. Automatic sending to the client on the day of the cut (or booking).
           </p>
         </div>
 
@@ -277,10 +277,10 @@ const vSlideUp = {
             />
           </div>
           <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
-            Métricas Preciosas
+            Valuable Metrics
           </h4>
           <p class="text-[#606D80] font-medium leading-relaxed">
-            Acompanhe lucros e cortes mais pedidos através de um painel de controlo claro.
+            Track profits and most requested cuts through a clear control panel.
           </p>
         </div>
 
@@ -300,7 +300,7 @@ const vSlideUp = {
               Integrações (n8n, Stripe)
             </h4>
             <p class="text-[#606D80] font-medium leading-relaxed">
-              Automações preparadas para se conectarem com a sua contabilidade, pagamentos automáticos e fluxos via webhook. Tudo interligado num ecossistema perfeito.
+              Automations ready to connect with your accounting, automatic payments and flows via webhook. Everything interconnected in a perfect ecosystem.
             </p>
           </div>
           <!-- Linhas de automação (Visual) -->
@@ -351,15 +351,15 @@ const vSlideUp = {
         <div class="absolute top-0 right-0 w-64 h-64 bg-[#567EBB]/20 blur-[80px] rounded-full" />
 
         <h2 class="text-4xl md:text-6xl font-black text-[#DCE0E6] mb-6 relative z-10 tracking-tight">
-          Pronto para subir ao <br class="hidden sm:block"> próximo nível?
+          Ready to level up?
         </h2>
         <p class="text-xl text-[#606D80] mb-10 max-w-2xl mx-auto relative z-10 font-medium">
-          Esqueça os cadernos manuscritos e agendas confusas. Crie a sua conta num minuto e revolucione o seu ambiente de trabalho.
+          Forget handwritten notebooks and confusing schedules. Create your account in a minute and revolutionize your work environment.
         </p>
 
         <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button class="bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] py-3 px-10 rounded-full font-bold shadow-[0_10px_30px_-10px_rgba(43,76,126,0.6)] hover:scale-105 transition-all text-lg flex items-center">
-            Criar Conta Gratuita <UIcon
+            Create Free Account <UIcon
               name="i-heroicons-arrow-right"
               class="w-5 h-5 ml-2"
             />
@@ -369,7 +369,7 @@ const vSlideUp = {
               name="i-heroicons-shield-check-solid"
               class="w-4 h-4 text-[#567EBB]"
             />
-            Cancele quando quiser.
+            Cancel anytime.
           </span>
         </div>
       </div>
