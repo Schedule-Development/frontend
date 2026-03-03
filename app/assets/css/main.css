@@ -8,30 +8,71 @@
   --font-sans: "Roboto Slab", serif;
 
   /* App Palette "High-End Pika" (Apple / Premium SaaS Style) */
-  --color-brand-50: #f0f4fa;
-  --color-brand-100: #dce5f2;
-  --color-brand-200: #b9cde5;
-  --color-brand-300: #8baad4;
-  --color-brand-400: #567EBB; /* Destaques / Ícones */
-  --color-brand-500: #2B4C7E; /* Botão Primary (CTA) */
-  --color-brand-600: #223c63;
-  --color-brand-700: #1a2d4a;
-  --color-brand-800: #132136;
-  --color-brand-900: #0d1726;
-  --color-brand-950: #080d16;
+  --color-brand-dark: #1F1F20;      /* Textos e letras */
+  --color-brand-primary: #2B4C7E;   /* Botões em destaque */
+  --color-brand-accent: #567EBB;    /* Destaques e links */
+  --color-brand-muted: #606D80;     /* Contornos se necessário */
+  --color-brand-surface: #DCE0E6;   /* Cor predominante do fundo */
+  
+  --color-light-surface: #DCE0E6;
+  --color-card-glass: rgba(255, 255, 255, 0.7);
 
-  /* Ice Gray to Almost Black Scale */
-  --color-nature-50: #DCE0E6; /* Background Principal "Cinza Gelo" */
-  --color-nature-100: #d3d8df;
-  --color-nature-200: #bfc6cf;
-  --color-nature-300: #a4adba;
-  --color-nature-400: #828e9f;
-  --color-nature-500: #606D80; /* Bordas / Divisores */
-  --color-nature-600: #4d5766;
-  --color-nature-700: #3c4450;
-  --color-nature-800: #2d333c;
-  --color-nature-900: #22262d;
-  --color-nature-950: #1F1F20; /* Texto Principal */
+  /* Semantic Colors - Apenas para feedback visual */
+  --color-semantic-success: #10B981;
+  --color-semantic-error: #EF4444;
+  --color-semantic-warning: #D97706;
+
+  /* Hakcing Nuxt UI: Redefinindo o azul padrão do Tailwind para o SEU azul (#2B4C7E) */
+  --color-blue-50: #DCE0E6;
+  --color-blue-100: #DCE0E6;
+  --color-blue-200: #DCE0E6;
+  --color-blue-300: #567EBB;
+  --color-blue-400: #567EBB;
+  --color-blue-500: #2B4C7E;
+  --color-blue-600: #567EBB;
+  --color-blue-700: #2B4C7E;
+  --color-blue-800: #1F1F20;
+  --color-blue-900: #1F1F20;
+  --color-blue-950: #1F1F20;
+
+  /* Hacking Nuxt UI: Redefinindo o stone (cinza base) para as SUAS cores base */
+  --color-stone-50: #DCE0E6;
+  --color-stone-100: #DCE0E6;
+  --color-stone-200: #DCE0E6;
+  --color-stone-300: #606D80;
+  --color-stone-400: #606D80;
+  --color-stone-500: #606D80;
+  --color-stone-600: #1F1F20;
+  --color-stone-700: #1F1F20;
+  --color-stone-800: #1F1F20;
+  --color-stone-900: #1F1F20;
+  --color-stone-950: #1F1F20;
+
+  /* Escala obrigatória exigida pelo Nuxt UI para cor principal (Mapeado estritamente para as suas cores) */
+  --color-brand-primary-50: #DCE0E6;
+  --color-brand-primary-100: #DCE0E6;
+  --color-brand-primary-200: #DCE0E6;
+  --color-brand-primary-300: #567EBB;
+  --color-brand-primary-400: #567EBB;
+  --color-brand-primary-500: #2B4C7E;
+  --color-brand-primary-600: #567EBB;
+  --color-brand-primary-700: #2B4C7E;
+  --color-brand-primary-800: #1F1F20;
+  --color-brand-primary-900: #1F1F20;
+  --color-brand-primary-950: #1F1F20;
+
+  /* Escala obrigatória exigida pelo Nuxt UI para cor base (Mapeado estritamente para as suas cores) */
+  --color-brand-muted-50: #DCE0E6;
+  --color-brand-muted-100: #DCE0E6;
+  --color-brand-muted-200: #DCE0E6;
+  --color-brand-muted-300: #606D80;
+  --color-brand-muted-400: #606D80;
+  --color-brand-muted-500: #606D80;
+  --color-brand-muted-600: #1F1F20;
+  --color-brand-muted-700: #1F1F20;
+  --color-brand-muted-800: #1F1F20;
+  --color-brand-muted-900: #1F1F20;
+  --color-brand-muted-950: #1F1F20;
 
   /* Animations */
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
@@ -54,32 +95,45 @@
   50% { opacity: 0.7; }
 }
 
-/* Base Light Mode - High End Look */
-:root {
-  --ui-bg: var(--color-nature-50); /* #DCE0E6 */
-  --ui-bg-muted: var(--color-nature-100); 
-  --ui-bg-elevated: #ffffff;
-  --ui-bg-accented: var(--color-brand-50);
-  --ui-border: var(--color-nature-300);
-  --ui-border-accented: var(--color-nature-400);
+@layer base {
+  body {
+    /* Aplica a sua color5 como fundo padrão da aplicação */
+    @apply bg-brand-surface text-brand-dark antialiased;
+  }
+
+  /* Efeito de gradiente sutil para títulos (Cinza Escuro -> Azul) */
+  .title-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-dark to-brand-primary;
+  }
 }
 
-.dark {
-  --ui-bg: var(--color-nature-950); /* #1F1F20 */
-  --ui-bg-muted: var(--color-nature-900);
-  --ui-bg-elevated: var(--color-nature-900);
-  --ui-bg-accented: var(--color-nature-800);
-  --ui-border: var(--color-nature-800);
+/* Efeito Glassmorphism que você gosta */
+@layer components {
+  .glass {
+    background: var(--color-card-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Base Light Mode - High End Look */
+:root {
+  --ui-bg: var(--color-brand-surface);
+  --ui-bg-muted: var(--color-brand-surface);
+  --ui-bg-elevated: #ffffff;
+  --ui-bg-accented: var(--color-brand-surface);
+  --ui-border: var(--color-brand-muted);
+  --ui-border-accented: var(--color-brand-muted);
+  
+  /* Sobrescrever Nuxt UI fallbacks para evitar o verde */
+  --ui-primary: var(--color-brand-primary-500);
 }
 
 body {
-  background-color: var(--ui-bg);
+  background-color: var(--color-brand-surface) !important;
+  color: var(--color-brand-dark) !important;
   min-height: 100vh;
-  color: var(--color-nature-950);
-}
-
-.dark body {
-  color: var(--color-nature-50);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -105,25 +159,25 @@ html {
 .pricing-page .pricing-plans-tight .card,
 .pricing-page .pricing-plans-tight .pricing-card,
 .pricing-page .pricing-plans-tight .u-pricing-plan {
-  border: 1px solid var(--color-lagoon-200) !important;
+  border: 1px solid var(--color-brand-surface) !important;
   border-radius: 1rem !important; /* More rounded like pebbles */
   background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%) !important;
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px -10px rgba(87, 143, 162, 0.2) !important; /* Soft lagoon shadow */
+  box-shadow: 0 10px 30px -10px rgba(43, 76, 126, 0.2) !important; /* Soft premium shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pricing-page .pricing-plans-tight .u-pricing-plan--highlight,
 .pricing-page .pricing-plans-tight .u-card--highlight {
-  border-color: var(--color-lagoon-400) !important;
-  box-shadow: 0 20px 40px -10px rgba(87, 143, 162, 0.4) !important;
-  background: linear-gradient(180deg, #ffffff 0%, var(--color-lagoon-50) 100%) !important;
+  border-color: var(--color-brand-accent) !important;
+  box-shadow: 0 20px 40px -10px rgba(43, 76, 126, 0.4) !important;
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-brand-surface) 100%) !important;
   transform: scale(1.05); /* Ensure scale perception */
 }
 
-/* Feature list bullets with lagoon color */
+/* Feature list bullets with premium color */
 .pricing-page .pricing-plans-tight ul li::before {
-  color: var(--color-lagoon-500) !important;
+  color: var(--color-brand-primary) !important;
 }
 
 /* Button override for pricing to ensure they pop */

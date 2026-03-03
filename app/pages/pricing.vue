@@ -15,7 +15,7 @@ const isYearly = ref(false)
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-nature-50 dark:bg-nature-950 font-sans selection:bg-brand-500 selection:text-white pt-24 pb-20">
+  <div class="relative min-h-screen overflow-hidden bg-brand-surface font-sans selection:bg-brand-primary selection:text-[#DCE0E6] pt-24 pb-20">
     <!-- 6. Elementos Visuais de Fundo (Backdrop & Glow Blobs) com cores Pika -->
     <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-[#567EBB]/15 blur-[120px] rounded-full pointer-events-none -z-10" />
     <div class="absolute top-[20%] right-[0%] w-[30%] h-[40%] bg-[#2B4C7E]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
@@ -26,16 +26,16 @@ const isYearly = ref(false)
     >
       <!-- Hero Header -->
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F20] to-[#2B4C7E] dark:from-white dark:to-brand-300 tracking-tight mb-6 mt-16">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F20] to-[#2B4C7E] tracking-tight mb-6 mt-16">
           {{ page.title }}
         </h1>
-        <p class="text-xl text-nature-600 dark:text-nature-300 font-medium">
+        <p class="text-xl text-[#606D80] font-medium">
           {{ page.description }}
         </p>
 
         <!-- 2. Micro-interações na Troca Mensal/Anual com Badge -->
         <div class="mt-12 flex items-center justify-center gap-4">
-          <span :class="['text-sm font-bold transition-colors', !isYearly ? 'text-nature-950 dark:text-white' : 'text-nature-500']">Mensal</span>
+          <span :class="['text-sm font-bold transition-colors', !isYearly ? 'text-[#1F1F20]' : 'text-[#606D80]']">Mensal</span>
 
           <button
             class="relative inline-flex h-8 w-16 items-center rounded-full transition-colors duration-300 focus:outline-none"
@@ -43,21 +43,21 @@ const isYearly = ref(false)
             @click="isYearly = !isYearly"
           >
             <span
-              class="inline-block h-6 w-6 transform rounded-full bg-white transition-all duration-[400ms] shadow-sm"
+              class="inline-block h-6 w-6 transform rounded-full bg-[#DCE0E6] transition-all duration-[400ms] shadow-sm"
               :class="isYearly ? 'translate-x-9' : 'translate-x-1'"
             />
           </button>
 
           <div class="relative flex items-center gap-3">
-            <span :class="['text-sm font-bold transition-colors', isYearly ? 'text-nature-950 dark:text-white' : 'text-nature-500']">Anual</span>
+            <span :class="['text-sm font-bold transition-colors', isYearly ? 'text-[#1F1F20]' : 'text-[#606D80]']">Anual</span>
             <!-- Badge Save 20% com pulso -->
             <div class="absolute left-full ml-4 animate-pulse">
-              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#567EBB]/10 text-[#2B4C7E] dark:text-brand-300 text-xs font-bold whitespace-nowrap border border-[#567EBB]/20 shadow-sm relative">
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#567EBB]/10 text-[#2B4C7E] text-xs font-bold whitespace-nowrap border border-[#567EBB]/20 shadow-sm relative">
                 <UIcon
                   name="i-heroicons-sparkles"
                   class="w-3.5 h-3.5"
                 /> Poupe 2 meses
-                <div class="absolute inset-0 bg-white/20 blur-[1px] rounded-full pointer-events-none" />
+                <div class="absolute inset-0 bg-[#DCE0E6]/20 blur-[1px] rounded-full pointer-events-none" />
               </span>
             </div>
           </div>
@@ -86,8 +86,8 @@ const isYearly = ref(false)
             <div
               :class="[
                 'relative h-full p-8 md:p-10 rounded-3xl flex flex-col overflow-hidden transition-all',
-                'bg-white/80 dark:bg-nature-900/80 backdrop-blur-xl border',
-                plan.highlight ? 'border-white/50 shadow-[0_20px_50px_rgba(43,76,126,0.15)] bg-white/95 dark:bg-nature-900/95' : 'border-[#606D80]/20 shadow-lg hover:shadow-2xl hover:border-[#567EBB]/50'
+                'bg-[#DCE0E6]/80 backdrop-blur-xl border',
+                plan.highlight ? 'border-[#DCE0E6]/50 shadow-[0_20px_50px_rgba(43,76,126,0.15)] bg-[#DCE0E6]/95' : 'border-[#606D80]/20 shadow-lg hover:shadow-2xl hover:border-[#567EBB]/50'
               ]"
             >
               <!-- 3. Brilho interno sutil no premium -->
@@ -101,16 +101,16 @@ const isYearly = ref(false)
                 v-if="plan.highlight"
                 class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
               >
-                <span class="bg-[#1F1F20] text-white text-xs tracking-wider uppercase font-black px-5 py-1.5 rounded-full shadow-xl border border-white/20 backdrop-blur-md">
+                <span class="bg-[#1F1F20] text-[#DCE0E6] text-xs tracking-wider uppercase font-black px-5 py-1.5 rounded-full shadow-xl border border-[#DCE0E6]/20 backdrop-blur-md">
                   {{ plan.highlight_text || 'Premium' }}
                 </span>
               </div>
 
               <div class="mb-8 relative z-10">
-                <h3 class="text-2xl font-black text-[#1F1F20] dark:text-white mb-3">
+                <h3 class="text-2xl font-black text-[#1F1F20] mb-3">
                   {{ plan.title }}
                 </h3>
-                <p class="text-sm font-medium text-[#606D80] dark:text-nature-400 h-10">
+                <p class="text-sm font-medium text-[#606D80] h-10">
                   {{ plan.description }}
                 </p>
               </div>
@@ -119,7 +119,7 @@ const isYearly = ref(false)
               <div class="mb-8 flex items-baseline gap-2 relative z-10 h-16">
                 <!-- Transition no Value -->
                 <div class="overflow-hidden flex items-center">
-                  <h4 :class="['text-5xl font-black tracking-tighter transition-all transform duration-500', plan.highlight ? 'text-[#2B4C7E] dark:text-brand-400' : 'text-[#1F1F20] dark:text-white']">
+                  <h4 :class="['text-5xl font-black tracking-tighter transition-all transform duration-500', plan.highlight ? 'text-[#2B4C7E]' : 'text-[#1F1F20]']">
                     {{ isYearly ? plan.price.year : plan.price.month }}
                   </h4>
                 </div>
@@ -139,7 +139,7 @@ const isYearly = ref(false)
                         class="w-3.5 h-3.5"
                       />
                     </div>
-                    <span class="text-sm font-semibold text-[#1F1F20] dark:text-nature-200">{{ feature }}</span>
+                    <span class="text-sm font-semibold text-[#1F1F20]">{{ feature }}</span>
                   </li>
                 </ul>
               </div>
@@ -151,7 +151,7 @@ const isYearly = ref(false)
                 class="rounded-xl relative z-10 font-bold tracking-wide transition-all duration-300 hover:scale-[1.02]"
                 :class="[
                   plan.highlight
-                    ? 'bg-[#2B4C7E] hover:bg-[#567EBB] text-white shadow-[0_10px_20px_-10px_rgba(43,76,126,0.6)]'
+                    ? 'bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] shadow-[0_10px_20px_-10px_rgba(43,76,126,0.6)]'
                     : 'bg-[#DCE0E6] hover:bg-[#c6cdd6] text-[#1F1F20] border-transparent'
                 ]"
                 to="/signup"
@@ -164,9 +164,9 @@ const isYearly = ref(false)
       </div>
 
       <!-- 7. Conversão Imediata (Check de Objeção) -->
-      <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-bold text-[#606D80] dark:text-nature-400">
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm font-bold text-[#606D80]">
         <div class="flex items-center gap-2.5">
-          <div class="p-1.5 bg-[#DCE0E6]/50 dark:bg-nature-800/50 rounded-full">
+          <div class="p-1.5 bg-[#DCE0E6]/50 rounded-full">
             <UIcon
               name="i-heroicons-credit-card"
               class="w-4 h-4 text-[#567EBB]"
@@ -175,7 +175,7 @@ const isYearly = ref(false)
           No credit card required
         </div>
         <div class="flex items-center gap-2.5">
-          <div class="p-1.5 bg-[#DCE0E6]/50 dark:bg-nature-800/50 rounded-full">
+          <div class="p-1.5 bg-[#DCE0E6]/50 rounded-full">
             <UIcon
               name="i-heroicons-arrow-path"
               class="w-4 h-4 text-[#567EBB]"
@@ -184,7 +184,7 @@ const isYearly = ref(false)
           Cancel anytime
         </div>
         <div class="flex items-center gap-2.5">
-          <div class="p-1.5 bg-[#DCE0E6]/50 dark:bg-nature-800/50 rounded-full">
+          <div class="p-1.5 bg-[#DCE0E6]/50 rounded-full">
             <UIcon
               name="i-heroicons-lock-closed"
               class="w-4 h-4 text-[#567EBB]"
@@ -195,86 +195,86 @@ const isYearly = ref(false)
       </div>
 
       <!-- 4. Melhoria no Social Proof -->
-      <div class="mt-20 text-center border-t border-[#606D80]/10 dark:border-nature-800/40 pt-16">
+      <div class="mt-20 text-center border-t border-[#606D80]/10 pt-16">
         <div class="flex items-center justify-center -space-x-3 mb-5 hover:space-x-1 transition-all duration-500">
           <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] dark:border-nature-950 object-cover"
+            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
             src="https://i.pravatar.cc/150?img=11"
             alt="Avatar"
           >
           <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] dark:border-nature-950 object-cover"
+            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
             src="https://i.pravatar.cc/150?img=12"
             alt="Avatar"
           >
           <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] dark:border-nature-950 object-cover"
+            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
             src="https://i.pravatar.cc/150?img=33"
             alt="Avatar"
           >
           <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] dark:border-nature-950 object-cover"
+            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
             src="https://i.pravatar.cc/150?img=60"
             alt="Avatar"
           >
-          <div class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] dark:border-nature-950 bg-[#2B4C7E] flex items-center justify-center text-xs font-black text-white shadow-inner z-10">
+          <div class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] bg-[#2B4C7E] flex items-center justify-center text-xs font-black text-[#DCE0E6] shadow-inner z-10">
             +500
           </div>
         </div>
-        <p class="text-[#606D80] dark:text-nature-400 font-medium text-lg">
-          Junte-se a <span class="font-bold text-[#1F1F20] dark:text-white">500+ profissionais</span> que já automatizaram a agenda.
+        <p class="text-[#606D80] font-medium text-lg">
+          Junte-se a <span class="font-bold text-[#1F1F20]">500+ profissionais</span> que já automatizaram a agenda.
         </p>
       </div>
 
       <!-- 5. Tabela de Comparação "Sticky" -->
       <div class="mt-32 max-w-5xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-extrabold text-[#1F1F20] dark:text-white tracking-tight mb-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-[#1F1F20] tracking-tight mb-4">
             Compare os Planos
           </h2>
-          <p class="text-[#606D80] dark:text-nature-400 font-medium">
+          <p class="text-[#606D80] font-medium">
             Transparência total no que oferecemos para o seu negócio.
           </p>
         </div>
 
         <!-- Glassmorphism Container da Tabela -->
-        <div class="bg-white/60 dark:bg-nature-900/40 backdrop-blur-2xl border border-[#606D80]/20 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="bg-[#DCE0E6]/60 backdrop-blur-2xl border border-[#606D80]/20 rounded-3xl overflow-hidden shadow-2xl">
           <table class="w-full text-left border-collapse">
             <!-- Cabeçalho Sticky -->
-            <thead class="sticky top-20 bg-white/90 dark:bg-nature-900/90 backdrop-blur-xl z-20 shadow-sm border-b border-[#606D80]/10">
+            <thead class="sticky top-20 bg-[#DCE0E6]/90 backdrop-blur-xl z-20 shadow-sm border-b border-[#606D80]/10">
               <tr>
                 <th class="p-6 md:p-8 font-bold text-[#606D80] w-1/3 text-sm tracking-wider uppercase">
                   Funcionalidades
                 </th>
-                <th class="p-6 md:p-8 font-black text-[#1F1F20] dark:text-white text-center w-2/9 text-lg">
+                <th class="p-6 md:p-8 font-black text-[#1F1F20] text-center w-2/9 text-lg">
                   Iniciante
                 </th>
-                <th class="p-6 md:p-8 font-black text-[#2B4C7E] dark:text-brand-400 text-center w-2/9 text-lg">
+                <th class="p-6 md:p-8 font-black text-[#2B4C7E] text-center w-2/9 text-lg">
                   Profissional
                 </th>
-                <th class="p-6 md:p-8 font-black text-[#1F1F20] dark:text-white text-center w-2/9 text-lg">
+                <th class="p-6 md:p-8 font-black text-[#1F1F20] text-center w-2/9 text-lg">
                   Equipa
                 </th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-[#606D80]/10 dark:divide-nature-800/50 text-sm">
+            <tbody class="divide-y divide-[#606D80]/10 text-sm">
               <!-- Linhas da Tabela -->
-              <tr class="hover:bg-white/80 dark:hover:bg-nature-800/30 transition-colors group">
-                <td class="p-6 font-bold text-[#1F1F20] dark:text-nature-200">
+              <tr class="hover:bg-[#DCE0E6]/80 transition-colors group">
+                <td class="p-6 font-bold text-[#1F1F20]">
                   Agendamentos Mensais
                 </td>
-                <td class="p-6 text-center text-[#606D80] dark:text-nature-400 font-medium">
+                <td class="p-6 text-center text-[#606D80] font-medium">
                   Até 100
                 </td>
                 <td class="p-6 text-center font-black text-transparent bg-clip-text bg-gradient-to-r from-[#1F1F20] to-[#2B4C7E]">
                   Ilimitados
                 </td>
-                <td class="p-6 text-center text-[#1F1F20] dark:text-white font-bold">
+                <td class="p-6 text-center text-[#1F1F20] font-bold">
                   Ilimitados
                 </td>
               </tr>
-              <tr class="hover:bg-white/80 dark:hover:bg-nature-800/30 transition-colors group">
-                <td class="p-6 font-bold text-[#1F1F20] dark:text-nature-200">
+              <tr class="hover:bg-[#DCE0E6]/80 transition-colors group">
+                <td class="p-6 font-bold text-[#1F1F20]">
                   Lembretes WhatsApp
                 </td>
                 <td class="p-6 text-center">
@@ -296,8 +296,8 @@ const isYearly = ref(false)
                   />
                 </td>
               </tr>
-              <tr class="hover:bg-white/80 dark:hover:bg-nature-800/30 transition-colors">
-                <td class="p-6 font-bold text-[#1F1F20] dark:text-nature-200">
+              <tr class="hover:bg-[#DCE0E6]/80 transition-colors">
+                <td class="p-6 font-bold text-[#1F1F20]">
                   Dashboard de Lucros
                 </td>
                 <td class="p-6 text-center">
@@ -321,7 +321,7 @@ const isYearly = ref(false)
               </tr>
             </tbody>
             <!-- Tfoot para call actions de fecho -->
-            <tfoot class="bg-[#f0f4fa]/50 dark:bg-nature-900/60 border-t border-[#606D80]/10">
+            <tfoot class="bg-[#DCE0E6]/50 border-t border-[#606D80]/10">
               <tr>
                 <td class="p-6" />
                 <td class="p-6 text-center">
@@ -336,7 +336,7 @@ const isYearly = ref(false)
                   </UButton>
                 </td>
                 <td class="p-6 text-center">
-                  <button class="bg-[#2B4C7E] hover:bg-[#567EBB] text-white px-4 py-2 rounded-lg font-semibold transition-colors shadow-md hover:scale-105 w-full">
+                  <button class="bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] px-4 py-2 rounded-lg font-semibold transition-colors shadow-md hover:scale-105 w-full">
                     Assinar Agora
                   </button>
                 </td>
@@ -361,17 +361,17 @@ const isYearly = ref(false)
       <div class="mt-32 max-w-3xl mx-auto px-6 mb-16 relative">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#567EBB]/5 blur-[100px] rounded-full -z-10" />
         <div class="text-center mb-10">
-          <h2 class="text-3xl font-black text-[#1F1F20] dark:text-white tracking-tight">
+          <h2 class="text-3xl font-black text-[#1F1F20] tracking-tight">
             {{ page.faq.title }}
           </h2>
-          <p class="text-[#606D80] dark:text-nature-400 mt-3 font-medium">
+          <p class="text-[#606D80] mt-3 font-medium">
             {{ page.faq.description }}
           </p>
         </div>
         <UAccordion
           :items="page.faq.items"
           multiple
-          class="bg-white/70 dark:bg-nature-900/40 backdrop-blur-2xl border border-[#606D80]/20 rounded-[2rem] p-4 shadow-xl"
+          class="bg-[#DCE0E6]/70 backdrop-blur-2xl border border-[#606D80]/20 rounded-[2rem] p-4 shadow-xl text-[#1F1F20]"
         />
       </div>
     </div>

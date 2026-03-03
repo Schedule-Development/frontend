@@ -1,9 +1,22 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
 
-const color = computed(() =>
-  colorMode.value === 'dark' ? '#020618' : 'white'
-)
+// Forçar SEMPRE para o modo light, independentemente do sistema
+useHead({
+  htmlAttrs: {
+    class: 'light',
+    style: 'color-scheme: light;',
+    lang: 'en'
+  }
+})
+
+// Certificar de que o Nuxt / estado sempre seja "light" na montagem
+if (import.meta.client) {
+  colorMode.preference = 'light'
+  colorMode.value = 'light'
+}
+
+const color = computed(() => '#DCE0E6')
 
 useHead({
   meta: [
@@ -11,10 +24,7 @@ useHead({
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { key: 'theme-color', name: 'theme-color', content: color }
   ],
-  link: [{ rel: 'icon', href: '/favicon.ico' }],
-  htmlAttrs: {
-    lang: 'en'
-  }
+  link: [{ rel: 'icon', href: '/favicon.ico' }]
 })
 
 useSeoMeta({

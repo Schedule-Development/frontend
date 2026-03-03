@@ -296,7 +296,7 @@ function submit() {
           </div>
           <div class="flex justify-between text-[var(--ui-text-muted)]">
             <span>Desconto</span>
-            <span class="text-emerald-400">—</span>
+            <span class="text-[#10B981]">—</span>
           </div>
           <div class="flex justify-between font-bold text-[var(--ui-text)] pt-1.5 border-t border-[var(--ui-border)]">
             <span>Total</span>
@@ -317,7 +317,7 @@ function submit() {
               <div
                 v-for="brand in cardBrands"
                 :key="brand.label"
-                class="flex items-center justify-center w-12 h-8 rounded-md bg-white border border-[var(--ui-border)] overflow-hidden"
+                class="flex items-center justify-center w-12 h-8 rounded-md bg-[#DCE0E6] border border-[var(--ui-border)] overflow-hidden"
                 :title="brand.label"
               >
                 <img

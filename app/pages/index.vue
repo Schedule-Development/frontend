@@ -39,46 +39,44 @@ const vSlideUp = {
 </script>
 
 <template>
-  <div class="bg-white dark:bg-neutral-950 font-sans selection:bg-primary-500 selection:text-white overflow-hidden">
+  <div class="bg-brand-surface min-h-screen font-sans selection:bg-brand-primary selection:text-[#DCE0E6] overflow-hidden text-brand-dark">
     <!-- === HERO SECTION === -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 flex flex-col items-center justify-center text-center">
-      <!-- Glow effect (Luz de Fundo da Cor Primária) -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-primary-500/15 dark:bg-primary-500/20 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <!-- Glow effect (Azul como Luz) -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-[#2B4C7E]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
       <div
         v-slide-up
         class="px-6 mx-auto max-w-5xl z-10"
       >
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/50 text-neutral-700 dark:text-neutral-300 text-sm font-medium tracking-wide mb-8 border border-neutral-200 dark:border-neutral-700/50 shadow-sm">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#606D80]/10 backdrop-blur-md text-[#606D80] text-sm font-medium tracking-wide mb-8 border border-[#606D80]/30 shadow-sm">
           <UIcon
             name="i-heroicons-sparkles"
-            class="w-4 h-4 text-primary-500"
+            class="w-4 h-4 text-[#606D80]"
           />
-          <span class="opacity-95">A revolução tecnológica da sua Barbearia</span>
+          <span class="opacity-95 text-[#606D80]">A revolução tecnológica da sua Barbearia</span>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-neutral-950 dark:text-white mb-6 leading-[1.1]">
-          O Aplicativo para <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-700 dark:from-primary-400 dark:to-primary-600">Barbeiros</span> <br class="hidden md:block"> que querem crescer.
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] text-transparent bg-clip-text bg-gradient-to-br from-[#1F1F20] to-[#2B4C7E]">
+          O Aplicativo para Barbearias <br class="hidden md:block"> que querem crescer.
         </h1>
 
-        <p class="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mb-10 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-lg md:text-xl text-[#606D80] mb-10 max-w-3xl mx-auto leading-[1.8]">
           {{ description }}
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <UButton
             size="xl"
-            color="primary"
-            class="rounded-full font-bold px-8 shadow-xl shadow-primary-500/20 hover:scale-105 transition-transform"
+            class="rounded-full font-bold px-8 shadow-lg bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] hover:shadow-[0_10px_20px_-10px_rgba(43,76,126,0.8)] hover:scale-105 transition-all"
             to="/signup"
           >
             Começar Teste Grátis
           </UButton>
           <UButton
             size="xl"
-            color="gray"
             variant="ghost"
-            class="rounded-full font-semibold px-8 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+            class="rounded-full font-semibold px-8 text-[#1F1F20] hover:bg-[#606D80]/10"
             to="#funcionalidades"
           >
             Ver Funcionalidades <UIcon
@@ -89,90 +87,90 @@ const vSlideUp = {
         </div>
       </div>
 
-      <!-- Abstract Floating Dashboard Mockup -->
+      <!-- Abstract Floating Dashboard Mockup - Glassmorphism -->
       <div
         v-slide-up
         class="mt-20 relative w-full max-w-5xl px-6"
       >
-        <div class="relative w-full aspect-[16/9] bg-white dark:bg-neutral-900 rounded-[2rem] shadow-2xl border border-neutral-200/50 dark:border-neutral-800 overflow-hidden flex flex-col z-10">
+        <div class="relative w-full aspect-[16/9] bg-[#DCE0E6]/40 backdrop-blur-2xl rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(43,76,126,0.1)] border border-[#606D80]/20 overflow-hidden flex flex-col z-10">
           <!-- Simulated App Topbar -->
-          <div class="h-14 border-b border-neutral-100 dark:border-neutral-800/50 flex items-center px-6 gap-2 bg-neutral-50/50 dark:bg-neutral-900/50">
+          <div class="h-14 border-b border-[#606D80]/10 flex items-center px-6 gap-2 bg-[#DCE0E6]/30">
             <div class="flex gap-2">
-              <div class="w-3.5 h-3.5 rounded-full bg-red-400/90 shadow-sm border border-red-500/20" />
-              <div class="w-3.5 h-3.5 rounded-full bg-amber-400/90 shadow-sm border border-amber-500/20" />
-              <div class="w-3.5 h-3.5 rounded-full bg-emerald-400/90 shadow-sm border border-emerald-500/20" />
+              <div class="w-3.5 h-3.5 rounded-full bg-[#EF4444] shadow-sm border border-[#EF4444]" />
+              <div class="w-3.5 h-3.5 rounded-full bg-[#D97706] shadow-sm border border-[#D97706]" />
+              <div class="w-3.5 h-3.5 rounded-full bg-[#10B981] shadow-sm border border-[#10B981]" />
             </div>
-            <div class="mx-auto h-6 w-48 bg-neutral-200/50 dark:bg-neutral-800 rounded flex items-center justify-center">
-              <div class="h-1.5 w-24 bg-neutral-300 dark:bg-neutral-600 rounded-full" />
+            <div class="mx-auto h-6 w-48 bg-[#DCE0E6]/50 rounded flex items-center justify-center border border-[#606D80]/10">
+              <div class="h-1.5 w-24 bg-[#DCE0E6] rounded-full" />
             </div>
           </div>
           <!-- App Content Simulation -->
-          <div class="flex-1 p-8 grid grid-cols-12 gap-8 bg-neutral-50/30 dark:bg-neutral-950/20">
+          <div class="flex-1 p-8 grid grid-cols-12 gap-8 bg-transparent">
             <!-- Sidebar -->
-            <div class="hidden md:flex col-span-3 rounded-2xl bg-neutral-100/80 dark:bg-neutral-800/50 flex-col gap-4 p-5">
-              <div class="h-10 w-full bg-neutral-200/50 dark:bg-neutral-700/50 rounded-xl" />
-              <div class="h-10 w-full bg-neutral-200/50 dark:bg-neutral-700/50 rounded-xl" />
-              <div class="h-10 w-full bg-neutral-200/50 dark:bg-neutral-700/50 rounded-xl" />
+            <div class="hidden md:flex col-span-3 rounded-2xl bg-[#DCE0E6]/50 flex-col gap-4 p-5 border border-[#606D80]/5">
+              <div class="h-10 w-full bg-[#DCE0E6]/50 rounded-xl" />
+              <div class="h-10 w-full bg-[#DCE0E6]/50 rounded-xl" />
+              <div class="h-10 w-full bg-[#DCE0E6]/50 rounded-xl" />
             </div>
             <!-- Main Content -->
             <div class="col-span-12 md:col-span-9 flex flex-col gap-6">
               <div class="flex flex-col sm:flex-row gap-4">
-                <div class="h-28 flex-1 bg-neutral-100/80 dark:bg-neutral-800/50 rounded-3xl p-5 flex flex-col justify-end">
-                  <div class="h-3 w-16 bg-neutral-300 dark:bg-neutral-600 rounded mb-3" />
-                  <div class="h-6 w-24 bg-neutral-300 dark:bg-neutral-600 rounded" />
+                <div class="h-28 flex-1 bg-[#DCE0E6]/50 rounded-3xl p-5 flex flex-col justify-end border border-[#606D80]/5">
+                  <div class="h-3 w-16 bg-[#DCE0E6] rounded mb-3" />
+                  <div class="h-6 w-24 bg-[#DCE0E6] rounded" />
                 </div>
                 <!-- Highlighted primary stat -->
-                <div class="h-28 flex-1 bg-primary-50 dark:bg-primary-900/10 rounded-3xl border border-primary-100 dark:border-primary-800/50 p-5 flex flex-col justify-end">
-                  <div class="h-3 w-20 bg-primary-200 dark:bg-primary-700 rounded mb-3" />
-                  <div class="h-6 w-24 bg-primary-400 dark:bg-primary-500 rounded" />
+                <div class="h-28 flex-1 bg-[#2B4C7E]/10 rounded-3xl border border-[#2B4C7E]/20 p-5 flex flex-col justify-end">
+                  <div class="h-3 w-20 bg-[#2B4C7E]/40 rounded mb-3" />
+                  <div class="h-6 w-24 bg-[#2B4C7E] rounded" />
                 </div>
-                <div class="h-28 flex-1 bg-neutral-100/80 dark:bg-neutral-800/50 rounded-3xl p-5 flex flex-col justify-end">
-                  <div class="h-3 w-16 bg-neutral-300 dark:bg-neutral-600 rounded mb-3" />
-                  <div class="h-6 w-24 bg-neutral-300 dark:bg-neutral-600 rounded" />
+                <div class="h-28 flex-1 bg-[#DCE0E6]/50 rounded-3xl p-5 flex flex-col justify-end border border-[#606D80]/5">
+                  <div class="h-3 w-16 bg-[#DCE0E6] rounded mb-3" />
+                  <div class="h-6 w-24 bg-[#DCE0E6] rounded" />
                 </div>
               </div>
-              <div class="flex-1 bg-neutral-100/80 dark:bg-neutral-800/50 rounded-3xl p-6">
-                <div class="h-4 w-1/3 bg-neutral-200 dark:bg-neutral-700 rounded mb-4" />
-                <div class="h-full w-full border border-neutral-200 border-dashed dark:border-neutral-700 rounded-xl" />
+              <div class="flex-1 bg-[#DCE0E6]/50 rounded-3xl p-6 border border-[#606D80]/5">
+                <div class="h-4 w-1/3 bg-[#DCE0E6] rounded mb-4" />
+                <div class="h-full w-full border border-[#DCE0E6] border-dashed rounded-xl" />
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Elemento flutuante esquerdo (Notificação Verde) -->
-        <div class="absolute -left-2 md:-left-8 top-16 md:top-24 z-20 bg-white/90 dark:bg-neutral-800/90 p-4 rounded-2xl shadow-xl border border-neutral-100 dark:border-neutral-700 animate-float backdrop-blur-xl">
+        <!-- Elemento flutuante esquerdo -->
+        <div class="absolute -left-2 md:-left-8 top-16 md:top-24 z-20 bg-[#DCE0E6]/80 p-4 rounded-2xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.05)] border border-[#606D80]/10 animate-float backdrop-blur-xl">
           <div class="flex items-center gap-4">
-            <div class="p-2.5 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl">
+            <div class="p-2.5 bg-[#10B981]/20 text-[#10B981] rounded-xl">
               <UIcon
                 name="i-heroicons-check-circle-solid"
                 class="w-6 h-6"
               />
             </div>
             <div>
-              <p class="text-sm font-bold text-neutral-900 dark:text-white">
+              <p class="text-sm font-bold text-[#1F1F20]">
                 Corte com Barba
               </p>
-              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+              <p class="text-xs font-medium text-[#606D80]">
                 Hoje, 14:30 - André F.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Elemento flutuante direito (Notificação Dinheiro Primário) -->
-        <div class="absolute -right-2 md:-right-8 bottom-16 md:bottom-24 z-20 bg-white/90 dark:bg-neutral-800/90 p-4 rounded-2xl shadow-xl border border-neutral-100 dark:border-neutral-700 animate-float-delayed backdrop-blur-xl">
+        <!-- Elemento flutuante direito -->
+        <div class="absolute -right-2 md:-right-8 bottom-16 md:bottom-24 z-20 bg-[#DCE0E6]/80 p-4 rounded-2xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.05)] border border-[#606D80]/10 animate-float-delayed backdrop-blur-xl">
           <div class="flex items-center gap-4">
-            <div class="p-2.5 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-xl">
+            <div class="p-2.5 bg-[#2B4C7E]/10 text-[#2B4C7E] rounded-xl">
               <UIcon
                 name="i-heroicons-banknotes-solid"
                 class="w-6 h-6"
               />
             </div>
             <div>
-              <p class="text-sm font-bold text-neutral-900 dark:text-white">
+              <p class="text-sm font-bold text-[#1F1F20]">
                 + 35,00 €
               </p>
-              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+              <p class="text-xs font-medium text-[#606D80]">
                 Pagamento concluído
               </p>
             </div>
@@ -182,35 +180,35 @@ const vSlideUp = {
     </section>
 
     <!-- === SOCIAL PROOF SECTION === -->
-    <section class="py-12 border-y border-neutral-100 dark:border-neutral-900 bg-neutral-50/50 dark:bg-neutral-900/30">
+    <section class="py-12 border-y border-[#606D80]/10 bg-transparent">
       <div class="max-w-7xl mx-auto px-6 text-center">
-        <p class="text-xs font-bold text-neutral-400 dark:text-neutral-500 tracking-[0.2em] uppercase mb-8">
+        <p class="text-xs font-bold text-[#606D80] tracking-[0.2em] uppercase mb-8">
           Mais de 500 profissionais confiam em nós
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 hover:opacity-100 transition-opacity duration-500 filter grayscale">
-          <h3 class="text-2xl font-black text-neutral-900 dark:text-white flex items-center gap-2">
+        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 text-[#606D80] hover:[&>*]:text-[#1F1F20] transition-colors duration-500">
+          <h3 class="text-2xl font-black flex items-center gap-2 transition-colors duration-300">
             <UIcon
               name="i-heroicons-scissors"
               class="w-6 h-6"
             /> BarberKing
           </h3>
-          <h3 class="text-2xl font-bold text-neutral-900 dark:text-white uppercase tracking-widest">
+          <h3 class="text-2xl font-bold uppercase tracking-widest transition-colors duration-300">
             SharpCuts
           </h3>
-          <h3 class="text-2xl font-serif text-neutral-900 dark:text-white italic">
+          <h3 class="text-2xl font-serif italic transition-colors duration-300">
             Gentlemen's
           </h3>
-          <h3 class="text-2xl font-bold text-neutral-900 dark:text-white">
+          <h3 class="text-2xl font-bold transition-colors duration-300">
             Fade&Co
           </h3>
-          <h3 class="text-2xl font-black tracking-tighter text-neutral-900 dark:text-white">
+          <h3 class="text-2xl font-black tracking-tighter transition-colors duration-300">
             THE SHOP
           </h3>
         </div>
       </div>
     </section>
 
-    <!-- === FEATURES SECTION === -->
+    <!-- === FEATURES SECTION (Bento Grid) === -->
     <section
       id="funcionalidades"
       class="py-32 max-w-7xl mx-auto px-6"
@@ -219,76 +217,119 @@ const vSlideUp = {
         v-slide-up
         class="text-center mb-20"
       >
-        <span class="text-primary-600 dark:text-primary-400 font-bold tracking-wider text-sm uppercase mb-3 block">Ferramentas Essenciais</span>
-        <h2 class="text-4xl md:text-5xl font-extrabold text-neutral-950 dark:text-white tracking-tight">
+        <span class="text-[#567EBB] font-bold tracking-wider text-sm uppercase mb-3 block">Ferramentas Essenciais</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-[#1F1F20] tracking-tight">
           Tudo para manter a cadeira cheia.
         </h2>
-        <p class="text-lg text-neutral-600 dark:text-neutral-400 mt-5 max-w-2xl mx-auto">
+        <p class="text-lg text-[#606D80] mt-5 max-w-2xl mx-auto">
           Deixámos a parte burocrática da gestão para os algoritmos. O seu único trabalho vai ser ligar a máquina e surpreender clientes.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8 relative">
-        <!-- Linha conectiva invisível que os novos designs costumam ter atrás dos quadrados... -->
-
-        <!-- Feature 1 -->
+      <div class="grid md:grid-cols-3 gap-6 relative">
+        <!-- Feature 1 (Bento Largo) -->
         <div
           v-slide-up
-          class="group relative bg-white dark:bg-neutral-900 p-10 rounded-[2.5rem] shadow-sm border border-neutral-100 dark:border-neutral-800/80 hover:shadow-2xl hover:shadow-primary-500/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+          class="md:col-span-2 group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden"
         >
-          <div class="absolute top-0 right-0 w-32 h-32 bg-primary-500/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500" />
-          <div class="w-16 h-16 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 border border-primary-200/50 dark:border-primary-800/30 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
+          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
             <UIcon
               name="i-heroicons-calendar-days"
               class="w-8 h-8"
             />
           </div>
-          <h4 class="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+          <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
             Agenda Inteligente
           </h4>
-          <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-            Os seus clientes acedem ao seu link próprio e marcam nos horários disponíveis. Sem chamadas na hora errada, sem choques.
+          <p class="text-[#606D80] font-medium leading-relaxed max-w-lg">
+            Os seus clientes acedem ao seu link próprio e marcam nos horários disponíveis. Sem chamadas na hora errada, sem choques de horários ou falhas na comunicação.
           </p>
         </div>
 
         <!-- Feature 2 -->
         <div
           v-slide-up
-          class="group relative bg-white dark:bg-neutral-900 p-10 rounded-[2.5rem] shadow-sm border border-neutral-100 dark:border-neutral-800/80 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+          class="group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden"
         >
-          <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500" />
-          <div class="w-16 h-16 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 border border-amber-200/50 dark:border-amber-800/30 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
+          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
             <UIcon
               name="i-heroicons-bell-alert"
               class="w-8 h-8"
             />
           </div>
-          <h4 class="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+          <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
             Lembretes WhatsApp
           </h4>
-          <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-            Reduza faltas em 90%. O sistema envia automaticamente SMS ou WhatsApp a avisar o cliente no dia do corte.
+          <p class="text-[#606D80] font-medium leading-relaxed">
+            Reduza faltas em 90%. Envio automático para o cliente no dia do corte (ou agendamento).
           </p>
         </div>
 
         <!-- Feature 3 -->
         <div
           v-slide-up
-          class="group relative bg-white dark:bg-neutral-900 p-10 rounded-[2.5rem] shadow-sm border border-neutral-100 dark:border-neutral-800/80 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+          class="group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden"
         >
-          <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500" />
-          <div class="w-16 h-16 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-800/30 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
+          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-inner">
             <UIcon
               name="i-heroicons-chart-pie"
               class="w-8 h-8"
             />
           </div>
-          <h4 class="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
+          <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
             Métricas Preciosas
           </h4>
-          <p class="text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-            Acompanhe lucros totais, os cortes mais pedidos e o fecho de caixa num painel visual incrivelmente limpo.
+          <p class="text-[#606D80] font-medium leading-relaxed">
+            Acompanhe lucros e cortes mais pedidos através de um painel de controlo claro.
           </p>
+        </div>
+
+        <!-- Feature 4 (Bento Largo) -->
+        <div
+          v-slide-up
+          class="md:col-span-2 group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden flex flex-col md:flex-row items-center gap-8 justify-between"
+        >
+          <div class="flex-1">
+            <div class="w-16 h-16 bg-[#2B4C7E]/10 text-[#2B4C7E] border border-[#2B4C7E]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+              <UIcon
+                name="i-heroicons-arrows-right-left"
+                class="w-8 h-8"
+              />
+            </div>
+            <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
+              Integrações (n8n, Stripe)
+            </h4>
+            <p class="text-[#606D80] font-medium leading-relaxed">
+              Automações preparadas para se conectarem com a sua contabilidade, pagamentos automáticos e fluxos via webhook. Tudo interligado num ecossistema perfeito.
+            </p>
+          </div>
+          <!-- Linhas de automação (Visual) -->
+          <div class="w-full md:w-1/3 flex flex-col gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded bg-[#DCE0E6] flex items-center justify-center">
+                <UIcon
+                  name="i-heroicons-credit-card"
+                  class="text-[#606D80] w-6 h-6"
+                />
+              </div> <div class="flex-1 h-px bg-[#DCE0E6]" /> <div class="w-2 h-2 rounded-full bg-[#567EBB]" />
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded bg-[#DCE0E6] flex items-center justify-center">
+                <UIcon
+                  name="i-heroicons-calendar"
+                  class="text-[#606D80] w-6 h-6"
+                />
+              </div> <div class="flex-1 h-px bg-[#DCE0E6]" /> <div class="w-2 h-2 rounded-full bg-[#567EBB]" />
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded bg-[#DCE0E6] flex items-center justify-center">
+                <UIcon
+                  name="i-heroicons-envelope"
+                  class="text-[#606D80] w-6 h-6"
+                />
+              </div> <div class="flex-1 h-px bg-[#DCE0E6]" /> <div class="w-2 h-2 rounded-full bg-[#567EBB]" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -297,41 +338,36 @@ const vSlideUp = {
     <section class="py-24 px-6 relative mb-12">
       <!-- Decorator rings -->
       <div class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
-        <div class="w-[800px] h-[800px] border-[1px] border-primary-500/10 rounded-full absolute top-[10%]" />
-        <div class="w-[1200px] h-[1200px] border-[1px] border-primary-500/5 rounded-full absolute top-[5%]" />
+        <div class="w-[800px] h-[800px] border-[1px] border-[#567EBB]/10 rounded-full absolute top-[10%]" />
+        <div class="w-[1200px] h-[1200px] border-[1px] border-[#2B4C7E]/5 rounded-full absolute top-[5%]" />
       </div>
 
       <div
         v-slide-up
-        class="max-w-5xl mx-auto bg-neutral-950 dark:bg-neutral-900 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl"
+        class="max-w-5xl mx-auto bg-[#1F1F20] rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl"
       >
         <!-- Overlay Gradient -->
-        <div class="absolute inset-0 bg-gradient-to-tr from-primary-600/30 via-transparent to-primary-900/20 pointer-events-none" />
-        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/20 blur-[80px] rounded-full" />
+        <div class="absolute inset-0 bg-gradient-to-tr from-[#2B4C7E]/30 via-transparent to-transparent pointer-events-none" />
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#567EBB]/20 blur-[80px] rounded-full" />
 
-        <h2 class="text-4xl md:text-6xl font-black text-white mb-6 relative z-10 tracking-tight">
+        <h2 class="text-4xl md:text-6xl font-black text-[#DCE0E6] mb-6 relative z-10 tracking-tight">
           Pronto para subir ao <br class="hidden sm:block"> próximo nível?
         </h2>
-        <p class="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto relative z-10 font-medium">
+        <p class="text-xl text-[#606D80] mb-10 max-w-2xl mx-auto relative z-10 font-medium">
           Esqueça os cadernos manuscritos e agendas confusas. Crie a sua conta num minuto e revolucione o seu ambiente de trabalho.
         </p>
 
         <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <UButton
-            size="xl"
-            color="primary"
-            class="rounded-full shadow-[0_0_40px_rgba(var(--color-primary-500),0.3)] px-10 font-bold hover:scale-105 transition-transform"
-            to="/signup"
-          >
+          <button class="bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] py-3 px-10 rounded-full font-bold shadow-[0_10px_30px_-10px_rgba(43,76,126,0.6)] hover:scale-105 transition-all text-lg flex items-center">
             Criar Conta Gratuita <UIcon
               name="i-heroicons-arrow-right"
               class="w-5 h-5 ml-2"
             />
-          </UButton>
-          <span class="text-neutral-400 text-sm mt-3 sm:mt-0 sm:ml-4 flex items-center gap-1.5 font-medium">
+          </button>
+          <span class="text-[#606D80] text-sm mt-3 sm:mt-0 sm:ml-4 flex items-center gap-1.5 font-medium">
             <UIcon
               name="i-heroicons-shield-check-solid"
-              class="w-4 h-4 text-emerald-500"
+              class="w-4 h-4 text-[#567EBB]"
             />
             Cancele quando quiser.
           </span>

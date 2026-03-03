@@ -17,13 +17,13 @@ defineProps({
 
 <template>
   <div
-    class="w-full h-full flex flex-col justify-center text-center bg-slate-900 p-8"
+    class="w-full h-full flex flex-col justify-center text-center bg-[#1F1F20] p-8"
   >
     <div class="relative">
-      <h1 class="text-8xl mb-4 text-white">
+      <h1 class="text-8xl mb-4 text-[#DCE0E6]">
         {{ title }}
       </h1>
-      <p class="text-5xl text-gray-200 leading-tight">
+      <p class="text-5xl text-[#DCE0E6] leading-tight">
         {{ description }}
       </p>
     </div>

@@ -29,13 +29,12 @@ const isScrolled = computed(() => y.value > 20)
       :class="[
         'transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)] flex items-center justify-between px-6',
         isScrolled
-          ? 'w-[90%] max-w-5xl bg-gray-900/95 backdrop-blur-xl border border-gray-700/50 rounded-full h-14 shadow-2xl'
+          ? 'w-[90%] max-w-5xl bg-[#DCE0E6]/80 backdrop-blur-xl border border-[#606D80]/20 rounded-full h-14 shadow-md'
           : 'w-full bg-transparent h-20'
       ]"
     >
       <div
-        class="flex items-center gap-4 transition-colors duration-300"
-        :class="isScrolled ? 'text-white' : 'text-gray-900 dark:text-white'"
+        class="flex items-center gap-4 transition-colors duration-300 text-[#1F1F20]"
       >
         <NuxtLink
           to="/"
@@ -46,15 +45,14 @@ const isScrolled = computed(() => y.value > 20)
       </div>
 
       <div
-        class="hidden md:flex items-center gap-8 text-sm font-semibold transition-colors duration-300"
-        :class="isScrolled ? 'text-gray-200' : 'text-gray-900 dark:text-gray-200'"
+        class="hidden md:flex items-center gap-8 text-sm font-semibold transition-colors duration-300 text-[#1F1F20]"
       >
         <NuxtLink
           v-for="item in items"
           :key="item.to"
           :to="item.to"
-          class="transition hover:text-primary-500 dark:hover:text-primary-400"
-          active-class="text-primary-600 dark:text-primary-400"
+          class="transition hover:text-[#567EBB]"
+          active-class="!text-[#2B4C7E]"
         >
           {{ item.label }}
         </NuxtLink>
@@ -63,17 +61,16 @@ const isScrolled = computed(() => y.value > 20)
       <div class="flex items-center gap-4">
         <UButton
           label="Sign in"
-          :color="isScrolled ? 'white' : 'gray'"
+          color="gray"
           variant="ghost"
           to="/login"
-          :class="isScrolled ? 'hidden sm:flex hover:bg-white/10 text-white' : 'flex'"
+          :class="isScrolled ? 'hidden sm:flex hover:bg-[#606D80]/10 !text-[#1F1F20]' : 'flex !text-[#1F1F20] hover:bg-[#606D80]/10'"
         />
         <UButton
           label="Sign up"
-          :color="isScrolled ? 'primary' : 'black'"
+          class="!bg-[#2B4C7E] hover:!bg-[#567EBB] !text-[#DCE0E6] rounded-full transition-all duration-300 font-bold"
           variant="solid"
           to="/signup"
-          class="rounded-full transition-all duration-300 font-bold"
         />
       </div>
     </nav>
