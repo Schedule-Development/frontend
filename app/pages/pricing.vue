@@ -194,39 +194,7 @@ const isYearly = ref(false)
         </div>
       </div>
 
-      <!-- 4. Melhoria no Social Proof -->
-      <div class="mt-20 text-center border-t border-[#606D80]/10 pt-16">
-        <div class="flex items-center justify-center -space-x-3 mb-5 hover:space-x-1 transition-all duration-500">
-          <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
-            src="https://i.pravatar.cc/150?img=11"
-            alt="Avatar"
-          >
-          <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
-            src="https://i.pravatar.cc/150?img=12"
-            alt="Avatar"
-          >
-          <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
-            src="https://i.pravatar.cc/150?img=33"
-            alt="Avatar"
-          >
-          <img
-            class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] object-cover"
-            src="https://i.pravatar.cc/150?img=60"
-            alt="Avatar"
-          >
-          <div class="w-12 h-12 rounded-full border-[3px] border-[#DCE0E6] bg-[#2B4C7E] flex items-center justify-center text-xs font-black text-[#DCE0E6] shadow-inner z-10">
-            +500
-          </div>
-        </div>
-        <p class="text-[#606D80] font-medium text-lg">
-          Junte-se a <span class="font-bold text-[#1F1F20]">500+ profissionais</span> que já automatizaram a agenda.
-        </p>
-      </div>
-
-      <!-- 5. Tabela de Comparação "Sticky" -->
+      <!-- Tabela de Comparação "Sticky" -->
       <div class="mt-32 max-w-5xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-extrabold text-[#1F1F20] tracking-tight mb-4">
@@ -355,24 +323,6 @@ const isYearly = ref(false)
             </tfoot>
           </table>
         </div>
-      </div>
-
-      <!-- FAQ Section -->
-      <div class="mt-32 max-w-3xl mx-auto px-6 mb-16 relative">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#567EBB]/5 blur-[100px] rounded-full -z-10" />
-        <div class="text-center mb-10">
-          <h2 class="text-3xl font-black text-[#1F1F20] tracking-tight">
-            {{ page.faq.title }}
-          </h2>
-          <p class="text-[#606D80] mt-3 font-medium">
-            {{ page.faq.description }}
-          </p>
-        </div>
-        <UAccordion
-          :items="page.faq.items"
-          multiple
-          class="bg-[#DCE0E6]/70 backdrop-blur-2xl border border-[#606D80]/20 rounded-[2rem] p-4 shadow-xl text-[#1F1F20]"
-        />
       </div>
     </div>
   </div>
