@@ -2,10 +2,15 @@
 </script>
 
 <template>
+  <USeparator
+    icon="i-simple-icons-nuxtdotjs"
+    class="h-px"
+  />
+
   <UFooter>
     <template #left>
       <p class="text-muted text-sm">
-        © {{ new Date().getFullYear() }}
+        Built with Nuxt UI • © {{ new Date().getFullYear() }}
       </p>
     </template>
   </UFooter>
