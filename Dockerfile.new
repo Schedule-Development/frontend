@@ -7,16 +7,15 @@ WORKDIR /app
 # Dependências nativas para build e runtime
 RUN apt-get update && apt-get install -y python3 make g++ gcc build-essential libsqlite3-dev
 
-COPY package.json pnpm-lock.yaml ./
-RUN corepack enable && corepack prepare pnpm@latest --activate
-RUN pnpm install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
 
 COPY . .
 ENV NODE_OPTIONS=--max-old-space-size=4096
-RUN pnpm build
+RUN npm run build
 
 ENV NODE_ENV=production
 ENV NUXT_PORT=3000
 EXPOSE 3000
 
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
