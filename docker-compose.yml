@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: saas-landing-page
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - NUXT_PUBLIC_SITE_URL=http://187.73.185.27:3001
+    volumes:
+      - ./data:/app/data

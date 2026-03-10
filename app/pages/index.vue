@@ -31,8 +31,8 @@ onMounted(() => {
 
 const vSlideUp = {
   mounted: (el: HTMLElement) => {
-    // Estado inicial invisível e para baixo
-    el.classList.add('transition-all', 'duration-1000', 'ease-[cubic-bezier(0.25,0.8,0.25,1)]', 'opacity-0', 'translate-y-12')
+    // Estado inicial invisível e para baixo (Motion System)
+    el.classList.add('transition-all', 'duration-[var(--duration-slow)]', 'ease-[var(--ease-indie)]', 'opacity-0', 'translate-y-12')
     observerElements.value.push(el)
   }
 }
@@ -41,7 +41,7 @@ const vSlideUp = {
 <template>
   <div class="bg-brand-surface min-h-screen font-sans selection:bg-brand-primary selection:text-[#DCE0E6] overflow-hidden text-brand-dark">
     <!-- === HERO SECTION === -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 flex flex-col items-center justify-center text-center">
+    <section class="relative pt-40 pb-24 lg:pt-56 lg:pb-40 flex flex-col items-center justify-center text-center">
       <!-- Glow effect (Azul como Luz) -->
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-[#2B4C7E]/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
@@ -68,7 +68,7 @@ const vSlideUp = {
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <UButton
             size="xl"
-            class="rounded-full font-bold px-8 shadow-lg bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] hover:shadow-[0_10px_20px_-10px_rgba(43,76,126,0.8)] hover:scale-105 transition-all"
+            class="rounded-full font-bold px-8 shadow-sm bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] hover:shadow-md transition-all duration-[var(--duration-fast)] ease-[var(--ease-indie)] hover:-translate-y-0.5"
             to="/signup"
           >
             Start Free Trial
@@ -76,7 +76,7 @@ const vSlideUp = {
           <UButton
             size="xl"
             variant="ghost"
-            class="rounded-full font-semibold px-8 text-[#1F1F20] hover:bg-[#606D80]/10"
+            class="rounded-full font-medium px-8 text-[#1F1F20] hover:bg-black/5 transition-all duration-[var(--duration-fast)] ease-[var(--ease-indie)]"
             to="#funcionalidades"
           >
             View Features <UIcon
@@ -107,31 +107,88 @@ const vSlideUp = {
           <!-- App Content Simulation -->
           <div class="flex-1 p-8 grid grid-cols-12 gap-8 bg-transparent">
             <!-- Sidebar -->
-            <div class="hidden md:flex col-span-3 rounded-2xl bg-[#DCE0E6]/50 flex-col gap-4 p-5 border border-[#606D80]/5">
-              <div class="h-10 w-full bg-[#DCE0E6]/50 rounded-xl" />
-              <div class="h-10 w-full bg-[#DCE0E6]/50 rounded-xl" />
-              <div class="h-10 w-full bg-[#DCE0E6]/50 rounded-xl" />
+            <div class="hidden md:flex col-span-3 rounded-2xl bg-[#DCE0E6]/50 flex-col gap-3 p-4 border border-[#606D80]/5">
+              <div class="flex items-center gap-2 px-3 py-2 bg-[#2B4C7E]/10 rounded-lg border border-[#2B4C7E]/20">
+                <div class="w-2 h-2 rounded-full bg-[#2B4C7E]" />
+                <div class="h-2 w-16 bg-[#2B4C7E]/30 rounded" />
+              </div>
+              <div class="flex items-center gap-2 px-3 py-2 bg-white/30 rounded-lg">
+                <div class="w-2 h-2 rounded-full bg-[#606D80]/30" />
+                <div class="h-2 w-20 bg-[#DCE0E6] rounded" />
+              </div>
+              <div class="flex items-center gap-2 px-3 py-2 bg-white/30 rounded-lg">
+                <div class="w-2 h-2 rounded-full bg-[#606D80]/30" />
+                <div class="h-2 w-14 bg-[#DCE0E6] rounded" />
+              </div>
             </div>
             <!-- Main Content -->
             <div class="col-span-12 md:col-span-9 flex flex-col gap-6">
+              <!-- Stats Cards -->
               <div class="flex flex-col sm:flex-row gap-4">
-                <div class="h-28 flex-1 bg-[#DCE0E6]/50 rounded-3xl p-5 flex flex-col justify-end border border-[#606D80]/5">
-                  <div class="h-3 w-16 bg-[#DCE0E6] rounded mb-3" />
-                  <div class="h-6 w-24 bg-[#DCE0E6] rounded" />
+                <div class="h-28 flex-1 bg-[#DCE0E6]/50 rounded-3xl p-5 flex flex-col justify-between border border-[#606D80]/5">
+                  <p class="text-[10px] font-bold text-[#606D80] uppercase tracking-wider">Agendamentos</p>
+                  <div class="flex items-baseline gap-2">
+                    <p class="text-3xl font-extrabold text-[#1F1F20]">12</p>
+                    <p class="text-xs text-[#10B981] font-semibold">+3 hoje</p>
+                  </div>
                 </div>
                 <!-- Highlighted primary stat -->
-                <div class="h-28 flex-1 bg-[#2B4C7E]/10 rounded-3xl border border-[#2B4C7E]/20 p-5 flex flex-col justify-end">
-                  <div class="h-3 w-20 bg-[#2B4C7E]/40 rounded mb-3" />
-                  <div class="h-6 w-24 bg-[#2B4C7E] rounded" />
+                <div class="h-28 flex-1 bg-[#2B4C7E]/10 rounded-3xl border border-[#2B4C7E]/20 p-5 flex flex-col justify-between">
+                  <p class="text-[10px] font-bold text-[#2B4C7E] uppercase tracking-wider">Receita Hoje</p>
+                  <div class="flex items-baseline gap-2">
+                    <p class="text-3xl font-extrabold text-[#1F1F20]">R$ 850</p>
+                    <p class="text-xs text-[#2B4C7E] font-semibold">73% da meta</p>
+                  </div>
                 </div>
-                <div class="h-28 flex-1 bg-[#DCE0E6]/50 rounded-3xl p-5 flex flex-col justify-end border border-[#606D80]/5">
-                  <div class="h-3 w-16 bg-[#DCE0E6] rounded mb-3" />
-                  <div class="h-6 w-24 bg-[#DCE0E6] rounded" />
+                <div class="h-28 flex-1 bg-[#DCE0E6]/50 rounded-3xl p-5 flex flex-col justify-between border border-[#606D80]/5">
+                  <p class="text-[10px] font-bold text-[#606D80] uppercase tracking-wider">Clientes</p>
+                  <div class="flex items-baseline gap-2">
+                    <p class="text-3xl font-extrabold text-[#1F1F20]">8</p>
+                    <p class="text-xs text-[#606D80] font-semibold">atendidos</p>
+                  </div>
                 </div>
               </div>
+              <!-- Timeline / Agendamentos -->
               <div class="flex-1 bg-[#DCE0E6]/50 rounded-3xl p-6 border border-[#606D80]/5">
-                <div class="h-4 w-1/3 bg-[#DCE0E6] rounded mb-4" />
-                <div class="h-full w-full border border-[#DCE0E6] border-dashed rounded-xl" />
+                <div class="flex items-center justify-between mb-5">
+                  <p class="text-sm font-bold text-[#1F1F20]">Agendamentos de Hoje</p>
+                  <div class="h-2 w-16 bg-[#DCE0E6] rounded" />
+                </div>
+                <div class="space-y-3">
+                  <!-- Appointment 1 - Completed -->
+                  <div class="flex items-center gap-3 p-3 bg-[#10B981]/5 rounded-xl border border-[#10B981]/20">
+                    <div class="w-8 h-8 rounded-lg bg-[#10B981]/20 flex items-center justify-center shrink-0">
+                      <div class="w-2 h-2 rounded-full bg-[#10B981]" />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-bold text-[#1F1F20] truncate">14:30 - Haircut + Beard</p>
+                      <p class="text-[10px] text-[#606D80]">André F.</p>
+                    </div>
+                    <p class="text-xs font-bold text-[#10B981]">R$ 85</p>
+                  </div>
+                  <!-- Appointment 2 - In Progress -->
+                  <div class="flex items-center gap-3 p-3 bg-[#2B4C7E]/5 rounded-xl border border-[#2B4C7E]/20">
+                    <div class="w-8 h-8 rounded-lg bg-[#2B4C7E]/20 flex items-center justify-center shrink-0">
+                      <div class="w-2 h-2 rounded-full bg-[#2B4C7E] animate-pulse" />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-bold text-[#1F1F20] truncate">16:00 - Corte Classic</p>
+                      <p class="text-[10px] text-[#606D80]">Em andamento</p>
+                    </div>
+                    <p class="text-xs font-bold text-[#2B4C7E]">R$ 80</p>
+                  </div>
+                  <!-- Appointment 3 - Scheduled -->
+                  <div class="flex items-center gap-3 p-3 bg-white/40 rounded-xl border border-[#606D80]/10">
+                    <div class="w-8 h-8 rounded-lg bg-[#606D80]/10 flex items-center justify-center shrink-0">
+                      <div class="w-2 h-2 rounded-full bg-[#606D80]/40" />
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-bold text-[#1F1F20] truncate">17:00 - Barba + Design</p>
+                      <p class="text-[10px] text-[#606D80]">João Silva</p>
+                    </div>
+                    <p class="text-xs font-bold text-[#606D80]">R$ 120</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -160,18 +217,38 @@ const vSlideUp = {
         <!-- Elemento flutuante direito -->
         <div class="absolute -right-2 md:-right-8 bottom-16 md:bottom-24 z-20 bg-[#DCE0E6]/80 p-4 rounded-2xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.05)] border border-[#606D80]/10 animate-float-delayed backdrop-blur-xl">
           <div class="flex items-center gap-4">
-            <div class="p-2.5 bg-[#2B4C7E]/10 text-[#2B4C7E] rounded-xl">
+            <div class="p-2.5 bg-[#10B981]/20 text-[#10B981] rounded-xl">
               <UIcon
-                name="i-heroicons-banknotes-solid"
+                name="i-heroicons-currency-dollar"
                 class="w-6 h-6"
               />
             </div>
             <div>
               <p class="text-sm font-bold text-[#1F1F20]">
-                + 35,00 €
+                + R$ 85,00
               </p>
               <p class="text-xs font-medium text-[#606D80]">
-                Payment completed
+                Pagamento recebido
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Elemento flutuante superior direito (Notificação) -->
+        <div class="absolute -right-2 md:-right-8 top-32 md:top-40 z-20 bg-[#DCE0E6]/80 p-4 rounded-2xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.05)] border border-[#606D80]/10 animate-float backdrop-blur-xl">
+          <div class="flex items-center gap-4">
+            <div class="p-2.5 bg-[#2B4C7E]/10 text-[#2B4C7E] rounded-xl">
+              <UIcon
+                name="i-heroicons-bell-alert"
+                class="w-6 h-6"
+              />
+            </div>
+            <div>
+              <p class="text-sm font-bold text-[#1F1F20]">
+                Novo Agendamento
+              </p>
+              <p class="text-xs font-medium text-[#606D80]">
+                Amanhã às 10:30
               </p>
             </div>
           </div>
@@ -185,23 +262,23 @@ const vSlideUp = {
         <p class="text-xs font-bold text-[#606D80] tracking-[0.2em] uppercase mb-8">
           More than 500 professionals trust us
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 text-[#606D80] hover:[&>*]:text-[#1F1F20] transition-colors duration-500">
-          <h3 class="text-2xl font-black flex items-center gap-2 transition-colors duration-300">
+        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 text-[#606D80]/70 hover:[&>*]:text-[#1F1F20] transition-colors duration-[var(--duration-slow)]">
+          <h3 class="text-2xl font-black flex items-center gap-2 transition-colors duration-[var(--duration-medium)]">
             <UIcon
               name="i-heroicons-scissors"
               class="w-6 h-6"
             /> BarberKing
           </h3>
-          <h3 class="text-2xl font-bold uppercase tracking-widest transition-colors duration-300">
+          <h3 class="text-2xl font-bold uppercase tracking-widest transition-colors duration-[var(--duration-medium)]">
             SharpCuts
           </h3>
-          <h3 class="text-2xl font-serif italic transition-colors duration-300">
+          <h3 class="text-2xl font-serif italic transition-colors duration-[var(--duration-medium)]">
             Gentlemen's
           </h3>
-          <h3 class="text-2xl font-bold transition-colors duration-300">
+          <h3 class="text-2xl font-bold transition-colors duration-[var(--duration-medium)]">
             Fade&Co
           </h3>
-          <h3 class="text-2xl font-black tracking-tighter transition-colors duration-300">
+          <h3 class="text-2xl font-black tracking-tighter transition-colors duration-[var(--duration-medium)]">
             THE SHOP
           </h3>
         </div>
@@ -226,13 +303,13 @@ const vSlideUp = {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 relative">
+      <div class="grid md:grid-cols-3 gap-8 relative">
         <!-- Feature 1 (Bento Largo) -->
         <div
           v-slide-up
-          class="md:col-span-2 group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden"
+          class="md:col-span-2 group relative bg-[#DCE0E6] p-12 rounded-[2.5rem] shadow-sm border border-[#606D80]/10 hover:shadow-md hover:border-[#567EBB]/20 transition-all duration-[var(--duration-medium)] ease-[var(--ease-indie)] hover:-translate-y-1 overflow-hidden"
         >
-          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
+          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner transition-transform duration-[var(--duration-medium)] ease-[var(--ease-indie)]">
             <UIcon
               name="i-heroicons-calendar-days"
               class="w-8 h-8"
@@ -249,9 +326,9 @@ const vSlideUp = {
         <!-- Feature 2 -->
         <div
           v-slide-up
-          class="group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden"
+          class="group relative bg-[#DCE0E6] p-12 rounded-[2.5rem] shadow-sm border border-[#606D80]/10 hover:shadow-md hover:border-[#567EBB]/20 transition-all duration-[var(--duration-medium)] ease-[var(--ease-indie)] hover:-translate-y-1 overflow-hidden"
         >
-          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
+          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner transition-transform duration-[var(--duration-medium)] ease-[var(--ease-indie)]">
             <UIcon
               name="i-heroicons-bell-alert"
               class="w-8 h-8"
@@ -268,9 +345,9 @@ const vSlideUp = {
         <!-- Feature 3 -->
         <div
           v-slide-up
-          class="group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden"
+          class="group relative bg-[#DCE0E6] p-12 rounded-[2.5rem] shadow-sm border border-[#606D80]/10 hover:shadow-md hover:border-[#567EBB]/20 transition-all duration-[var(--duration-medium)] ease-[var(--ease-indie)] hover:-translate-y-1 overflow-hidden"
         >
-          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+          <div class="w-16 h-16 bg-[#567EBB]/10 text-[#567EBB] border border-[#567EBB]/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner transition-transform duration-[var(--duration-medium)] ease-[var(--ease-indie)]">
             <UIcon
               name="i-heroicons-chart-pie"
               class="w-8 h-8"
@@ -287,17 +364,17 @@ const vSlideUp = {
         <!-- Feature 4 (Bento Largo) -->
         <div
           v-slide-up
-          class="md:col-span-2 group relative bg-[#DCE0E6] p-10 rounded-[2rem] shadow-sm border border-[#606D80]/10 hover:shadow-xl hover:border-[#567EBB]/20 transition-all duration-300 overflow-hidden flex flex-col md:flex-row items-center gap-8 justify-between"
+          class="md:col-span-2 group relative bg-[#DCE0E6] p-12 rounded-[2.5rem] shadow-sm border border-[#606D80]/10 hover:shadow-md hover:border-[#567EBB]/20 transition-all duration-[var(--duration-medium)] ease-[var(--ease-indie)] hover:-translate-y-1 overflow-hidden flex flex-col md:flex-row items-center gap-12 justify-between"
         >
           <div class="flex-1">
-            <div class="w-16 h-16 bg-[#2B4C7E]/10 text-[#2B4C7E] border border-[#2B4C7E]/20 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+            <div class="w-16 h-16 bg-[#2B4C7E]/10 text-[#2B4C7E] border border-[#2B4C7E]/20 rounded-2xl flex items-center justify-center mb-8 shadow-inner transition-transform duration-[var(--duration-medium)] ease-[var(--ease-indie)]">
               <UIcon
                 name="i-heroicons-arrows-right-left"
                 class="w-8 h-8"
               />
             </div>
             <h4 class="text-2xl font-bold text-[#1F1F20] mb-4">
-              Integrações (n8n, Stripe)
+              Integrações (n8n)
             </h4>
             <p class="text-[#606D80] font-medium leading-relaxed">
               Automations ready to connect with your accounting, automatic payments and flows via webhook. Everything interconnected in a perfect ecosystem.
@@ -335,7 +412,7 @@ const vSlideUp = {
     </section>
 
     <!-- === CTA BOTTOM SECTION === -->
-    <section class="py-24 px-6 relative mb-12">
+    <section class="py-32 px-6 relative mb-20">
       <!-- Decorator rings -->
       <div class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
         <div class="w-[800px] h-[800px] border-[1px] border-[#567EBB]/10 rounded-full absolute top-[10%]" />
@@ -344,27 +421,27 @@ const vSlideUp = {
 
       <div
         v-slide-up
-        class="max-w-5xl mx-auto bg-[#1F1F20] rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl"
+        class="max-w-5xl mx-auto bg-[#1F1F20] rounded-[3.5rem] p-16 md:p-24 text-center relative overflow-hidden shadow-2xl"
       >
         <!-- Overlay Gradient -->
         <div class="absolute inset-0 bg-gradient-to-tr from-[#2B4C7E]/30 via-transparent to-transparent pointer-events-none" />
         <div class="absolute top-0 right-0 w-64 h-64 bg-[#567EBB]/20 blur-[80px] rounded-full" />
 
-        <h2 class="text-4xl md:text-6xl font-black text-[#DCE0E6] mb-6 relative z-10 tracking-tight">
+        <h2 class="text-4xl md:text-6xl font-black text-white mb-8 relative z-10 tracking-tight">
           Ready to level up?
         </h2>
-        <p class="text-xl text-[#606D80] mb-10 max-w-2xl mx-auto relative z-10 font-medium">
-          Forget handwritten notebooks and confusing schedules. Create your account in a minute and revolutionize your work environment.
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto relative z-10 font-medium">
+          Forget handwritten notebooks and confusing schedules. Start with our Beginner plan and revolutionize your work environment.
         </p>
 
-        <div class="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button class="bg-[#2B4C7E] hover:bg-[#567EBB] text-[#DCE0E6] py-3 px-10 rounded-full font-bold shadow-[0_10px_30px_-10px_rgba(43,76,126,0.6)] hover:scale-105 transition-all text-lg flex items-center">
-            Create Free Account <UIcon
+        <div class="relative z-10 flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <button class="bg-white hover:bg-gray-100 text-[#1F1F20] py-4 px-12 rounded-full font-bold shadow-[0_10px_30px_-10px_rgba(255,255,255,0.2)] hover:shadow-[0_15px_40px_-10px_rgba(255,255,255,0.3)] transition-all duration-[var(--duration-fast)] ease-[var(--ease-indie)] hover:-translate-y-0.5 text-lg flex items-center">
+            Start with Beginner <UIcon
               name="i-heroicons-arrow-right"
               class="w-5 h-5 ml-2"
             />
           </button>
-          <span class="text-[#606D80] text-sm mt-3 sm:mt-0 sm:ml-4 flex items-center gap-1.5 font-medium">
+          <span class="text-gray-400 text-sm mt-3 sm:mt-0 sm:ml-4 flex items-center gap-1.5 font-medium">
             <UIcon
               name="i-heroicons-shield-check-solid"
               class="w-4 h-4 text-[#567EBB]"

@@ -11,14 +11,17 @@ useSeoMeta({
   description: 'Login to your account to continue'
 })
 
+const { login } = useAuth()
 const toast = useToast()
+const router = useRouter()
+const isLoading = ref(false)
 
 const fields = [
   {
     name: 'email',
     type: 'text' as const,
     label: 'Email',
-    placeholder: 'Enter your email',
+    placeholder: 'voce@exemplo.com',
     required: true
   },
   {
@@ -26,40 +29,34 @@ const fields = [
     label: 'Password',
     type: 'password' as const,
     placeholder: 'Enter your password'
-  },
-  {
-    name: 'remember',
-    label: 'Remember me',
-    type: 'checkbox' as const
-  }
-]
-
-const providers = [
-  {
-    label: 'Google',
-    icon: 'i-simple-icons-google',
-    onClick: () => {
-      toast.add({ title: 'Google', description: 'Login with Google' })
-    }
-  },
-  {
-    label: 'GitHub',
-    icon: 'i-simple-icons-github',
-    onClick: () => {
-      toast.add({ title: 'GitHub', description: 'Login with GitHub' })
-    }
   }
 ]
 
 const schema = z.object({
-  email: z.email('Invalid email'),
+  email: z.string().email('Invalid email'),
   password: z.string().min(8, 'Must be at least 8 characters')
 })
 
 type Schema = z.output<typeof schema>
 
-function onSubmit(payload: FormSubmitEvent<Schema>) {
-  console.log('Submitted', payload)
+const route = useRoute()
+
+async function onSubmit(payload: FormSubmitEvent<Schema>) {
+  isLoading.value = true
+  try {
+    await login(payload.data.email, payload.data.password)
+    toast.add({ title: 'Welcome back!', color: 'green' })
+    const redirect = route.query.redirect as string | undefined
+    router.push(redirect || '/')
+  } catch (error: any) {
+    toast.add({
+      title: 'Login failed',
+      description: error.data?.message || 'Invalid email or password',
+      color: 'red'
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -67,9 +64,9 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
   <UAuthForm
     :fields="fields"
     :schema="schema"
-    :providers="providers"
     title="Welcome back"
     icon="i-lucide-lock"
+    :submit="{ label: 'Sign in', loading: isLoading }"
     @submit="onSubmit"
   >
     <template #description>

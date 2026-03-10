@@ -1,11 +1,11 @@
 title: Transparent plans for elite barbers
 description: No hidden fees. Choose the ideal plan to boost your barbershop today.
 plans:
-  - title: Beginner
+  - title: Starter
     description: The essentials to organize your schedule and say goodbye to paper.
     price:
-      month: 19€
-      year: 190€
+      month: R$ 59
+      year: R$ 590
     features:
       - Online schedule 24/7
       - Email reminders
@@ -18,8 +18,8 @@ plans:
   - title: Professional
     description: Our most popular package with WhatsApp automation.
     price:
-      month: 29€
-      year: 290€
+      month: R$ 89
+      year: R$ 890
     highlight: true
     scale: true
     highlight_text: "Save 2 months"
@@ -33,11 +33,11 @@ plans:
     button:
       label: Choose Professional
 
-  - title: Barbershop (Team)
+  - title: Team
     description: For spaces with 3 or more professionals on the same schedule.
     price:
-      month: 59€
-      year: 590€
+      month: R$ 199
+      year: R$ 1990
     features:
       - All Professional features
       - Multiple calendars (Up to 5 barbers)
@@ -55,7 +55,7 @@ faq:
     - label: Can I change my plan later?
       content: Yes! You can upgrade or downgrade at any time from your account settings.
     - label: What payment methods do you accept?
-      content: We accept credit/debit cards via Stripe, MBWay and Multibanco reference.
+      content: We accept credit/debit cards, MBWay and Multibanco reference.
     - label: Do I need to use a credit card for the Trial?
       content: No. We offer 14 days free to try, without asking for any payment details until then.
     - label: Is there a limit for WhatsApp reminders?

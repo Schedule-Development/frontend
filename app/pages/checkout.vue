@@ -7,10 +7,6 @@ definePageMeta({ layout: false })
 const selectedPlanId = computed(() => (route.query.plan as string) || '')
 const cycle = computed(() => (route.query.cycle as string) || '0')
 
-watchEffect(() => {
-  if (!selectedPlanId.value) router.replace('/pricing')
-})
-
 const { data: pricePage } = await useAsyncData('pricing', () => queryCollection('pricing').first())
 
 type PlanLite = { title: string, description: string, price: { month: string, year: string }, features: string[] }
@@ -23,19 +19,6 @@ const priceValue = computed(() => {
   return isYearly.value ? selectedPlan.value.price.year : selectedPlan.value.price.month
 })
 
-const user = reactive({
-  companyName: '',
-  name: '',
-  email: '',
-  phone: '',
-  password: '',
-  cardNumber: '',
-  cardName: '',
-  cardExpiry: '',
-  cardCvc: '',
-  saveCard: false
-})
-
 const cardBrands = [
   { label: 'Visa', src: '/card-icons/visa.svg' },
   { label: 'Mastercard', src: '/card-icons/mastercard.svg' },
@@ -43,178 +26,173 @@ const cardBrands = [
   { label: 'Amex', src: '/card-icons/amex.svg' }
 ]
 
-function submit() {
-  console.log('Checkout submitted', { plan: selectedPlanId.value, cycle: cycle.value, ...user })
-  router.push('/')
+const checkoutSteps = [
+  'Clique em "Pagar com Stripe" abaixo',
+  'Insira seu cartão na página segura do Stripe',
+  `Seu plano ${selectedPlan.value?.title || ''} é ativado imediatamente`
+]
+
+const toast = useToast()
+const isLoading = ref(false)
+const userEmail = ref('')
+const organizationId = ref<string | null>(null)
+const authLoading = ref(true)
+
+onMounted(async () => {
+  if (!selectedPlanId.value) {
+    router.replace('/plans')
+    return
+  }
+  try {
+    const me = await $fetch<Record<string, any>>('/api/auth/me')
+    userEmail.value = me?.email || ''
+    organizationId.value = me?.organizationId || me?.organization?.id || null
+  } catch {
+    // Not authenticated — redirect to login, come back afterwards
+    const redirect = `/checkout?plan=${selectedPlanId.value}&cycle=${cycle.value}`
+    router.push(`/login?redirect=${encodeURIComponent(redirect)}`)
+  } finally {
+    authLoading.value = false
+  }
+})
+
+async function submit() {
+  if (!selectedPlan.value) {
+    toast.add({ title: 'Erro', description: 'Plano não selecionado', color: 'red' })
+    return
+  }
+
+  isLoading.value = true
+  try {
+    const response = await $fetch<{ url: string | null }>('/api/stripe/create-checkout-session', {
+      method: 'POST',
+      body: {
+        planTitle: selectedPlan.value.title,
+        cycle: parseInt(cycle.value),
+        email: userEmail.value,
+        organizationId: organizationId.value
+      }
+    })
+
+    if (response.url) {
+      window.location.href = response.url
+    } else {
+      throw new Error('URL de checkout não retornada')
+    }
+  } catch (error) {
+    console.error('Erro ao criar sessão de checkout:', error)
+    toast.add({
+      title: 'Erro',
+      description: error instanceof Error ? error.message : 'Erro ao processar pagamento',
+      color: 'red'
+    })
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
 <template>
   <div class="h-screen overflow-hidden bg-[var(--ui-bg)] flex items-center justify-center">
     <!-- back button -->
-    <NuxtLink
-      to="/pricing"
+    <button
       class="fixed left-5 top-5 z-50 flex items-center gap-1 text-xs text-[var(--ui-text-muted)] hover:text-[var(--ui-text)] transition-colors"
+      @click="router.back()"
     >
       <UIcon
         name="i-lucide-arrow-left"
         class="w-3.5 h-3.5"
       />
       Voltar
-    </NuxtLink>
+    </button>
 
     <div class="w-full max-w-5xl grid grid-cols-2 gap-5 px-5">
-      <!-- LEFT CARD – payment form -->
-      <div class="bg-[var(--ui-bg-elevated)] rounded-2xl p-6 border border-[var(--ui-border)] flex flex-col gap-4">
+      <!-- LEFT CARD – confirmation -->
+      <div class="bg-[var(--ui-bg-elevated)] rounded-2xl p-6 border border-[var(--ui-border)] flex flex-col gap-5">
         <!-- header -->
         <div>
           <div class="flex items-center gap-2 mb-0.5">
             <UIcon
-              name="i-lucide-credit-card"
+              name="i-lucide-shield-check"
               class="w-4 h-4 text-primary-400"
             />
             <h2 class="text-lg font-bold text-[var(--ui-text)]">
-              Finalizar Compra
+              Confirmar Assinatura
             </h2>
           </div>
           <p class="text-xs text-[var(--ui-text-muted)]">
-            Preencha seus dados e as informações do cartão
+            Você será redirecionado para o Stripe para pagar com segurança
           </p>
         </div>
 
-        <!-- account + card fields in a tight grid -->
-        <div class="grid grid-cols-2 gap-x-3 gap-y-2.5">
-          <UFormField
-            name="companyName"
-            label="Empresa"
-            size="sm"
-            class="col-span-2"
-          >
-            <UInput
-              v-model="user.companyName"
-              placeholder="Acme Inc."
-              size="sm"
-            />
-          </UFormField>
-          <UFormField
-            name="name"
-            label="Nome completo"
-            size="sm"
-          >
-            <UInput
-              v-model="user.name"
-              placeholder="João Silva"
-              size="sm"
-            />
-          </UFormField>
-          <UFormField
-            name="phone"
-            label="Telefone"
-            size="sm"
-          >
-            <UInput
-              v-model="user.phone"
-              placeholder="(11) 99999-9999"
-              size="sm"
-            />
-          </UFormField>
-          <UFormField
-            name="email"
-            label="E-mail"
-            size="sm"
-            class="col-span-2"
-          >
-            <UInput
-              v-model="user.email"
-              type="email"
-              placeholder="voce@exemplo.com"
-              size="sm"
-            />
-          </UFormField>
-          <UFormField
-            name="password"
-            label="Senha"
-            size="sm"
-            class="col-span-2"
-          >
-            <UInput
-              v-model="user.password"
-              type="password"
-              placeholder="Crie uma senha"
-              size="sm"
-            />
-          </UFormField>
+        <!-- loading auth -->
+        <div
+          v-if="authLoading"
+          class="flex items-center gap-2 text-xs text-[var(--ui-text-muted)]"
+        >
+          <UIcon
+            name="i-lucide-loader-circle"
+            class="w-4 h-4 animate-spin"
+          />
+          Verificando conta...
         </div>
 
-        <!-- divider -->
-        <div class="border-t border-[var(--ui-border)]" />
-
-        <!-- card fields -->
-        <div class="grid grid-cols-2 gap-x-3 gap-y-2.5">
-          <UFormField
-            name="cardNumber"
-            label="Número do cartão"
-            size="sm"
-            class="col-span-2"
-          >
-            <UInput
-              v-model="user.cardNumber"
-              placeholder="0000 0000 0000 0000"
-              leading-icon="i-lucide-credit-card"
-              size="sm"
+        <!-- user info -->
+        <div
+          v-else-if="userEmail"
+          class="flex items-center gap-3 p-3 bg-[var(--ui-bg)] rounded-xl"
+        >
+          <div class="w-8 h-8 rounded-full bg-primary-500/10 flex items-center justify-center shrink-0">
+            <UIcon
+              name="i-lucide-user"
+              class="w-4 h-4 text-primary-400"
             />
-          </UFormField>
-          <UFormField
-            name="cardName"
-            label="Nome no cartão"
-            size="sm"
-            class="col-span-2"
-          >
-            <UInput
-              v-model="user.cardName"
-              placeholder="Nome como está no cartão"
-              size="sm"
-            />
-          </UFormField>
-          <UFormField
-            name="cardExpiry"
-            label="Validade"
-            size="sm"
-          >
-            <UInput
-              v-model="user.cardExpiry"
-              placeholder="MM/AA"
-              size="sm"
-            />
-          </UFormField>
-          <UFormField
-            name="cardCvc"
-            label="CVV"
-            size="sm"
-          >
-            <UInput
-              v-model="user.cardCvc"
-              placeholder="123"
-              size="sm"
-            />
-          </UFormField>
+          </div>
+          <div>
+            <p class="text-xs text-[var(--ui-text-muted)]">
+              Conta vinculada
+            </p>
+            <p class="text-sm font-medium text-[var(--ui-text)]">
+              {{ userEmail }}
+            </p>
+          </div>
         </div>
 
-        <!-- save card + ssl -->
-        <div class="flex items-center justify-between">
-          <label class="flex items-center gap-1.5 text-xs text-[var(--ui-text-muted)] cursor-pointer select-none">
-            <UCheckbox
-              v-model="user.saveCard"
-              size="sm"
-            />
-            Salvar cartão para próximas compras
-          </label>
-          <span class="flex items-center gap-1 text-xs text-[var(--ui-text-muted)]">
+        <!-- steps -->
+        <div class="space-y-2.5">
+          <p class="text-xs font-semibold text-[var(--ui-text-muted)] uppercase tracking-wide">
+            Como funciona
+          </p>
+          <div
+            v-for="(step, i) in checkoutSteps"
+            :key="i"
+            class="flex items-start gap-2.5 text-xs text-[var(--ui-text-muted)]"
+          >
+            <div class="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-px">
+              <span class="text-blue-600 font-bold text-[10px]">{{ i + 1 }}</span>
+            </div>
+            {{ step }}
+          </div>
+        </div>
+
+        <div class="flex-1" />
+
+        <!-- SSL + Stripe badges -->
+        <div class="flex items-center gap-4 text-xs text-[var(--ui-text-muted)]">
+          <div class="flex items-center gap-1.5">
             <UIcon
               name="i-lucide-lock"
-              class="w-3 h-3"
-            /> SSL
-          </span>
+              class="w-3.5 h-3.5 text-green-500"
+            />
+            <span>Criptografia SSL</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <UIcon
+              name="i-lucide-shield"
+              class="w-3.5 h-3.5 text-blue-500"
+            />
+            <span>Powered by Stripe</span>
+          </div>
         </div>
 
         <!-- submit -->
@@ -222,9 +200,18 @@ function submit() {
           color="primary"
           block
           size="md"
+          :loading="isLoading"
+          :disabled="isLoading || authLoading || !userEmail || !organizationId"
           @click="submit"
         >
-          Finalizar pagamento · {{ priceValue }}/{{ isYearly ? 'ano' : 'mês' }}
+          <template v-if="!isLoading">
+            <UIcon
+              name="i-lucide-external-link"
+              class="w-4 h-4 mr-1.5"
+            />
+            Pagar com Stripe · {{ priceValue }}/{{ isYearly ? 'ano' : 'mês' }}
+          </template>
+          <span v-else>Criando sessão...</span>
         </UButton>
       </div>
 

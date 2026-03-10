@@ -78,6 +78,16 @@
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  /* Motion Design System (Indie Elegante) */
+  --ease-indie: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  --duration-cognitive: 150ms;
+  --duration-fast: 400ms;
+  --duration-medium: 600ms;
+  --duration-slow: 800ms;
+  --duration-xslow: 1100ms;
 }
 
 @keyframes fadeInUp {
@@ -99,6 +109,15 @@
   body {
     /* Aplica a sua color5 como fundo padrão da aplicação */
     @apply bg-brand-surface text-brand-dark antialiased;
+  }
+
+  /* Textura de Noise / Granulado Atmosférico (Indie Elegante) */
+  body::after {
+    @apply pointer-events-none fixed inset-0 z-[9999];
+    content: "";
+    /* Base frequency controla o tamanho do grão. 0.8 a 1.2 é excelente. */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.035;
   }
 
   /* Efeito de gradiente sutil para títulos (Cinza Escuro -> Azul) */
@@ -186,4 +205,29 @@ html {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: 9999px; /* Pill buttons */
+}
+
+/* --- Global Page Transitions (Indie Elegante) --- */
+.page-enter-active,
+.page-leave-active {
+  transition: all var(--duration-medium) var(--ease-indie);
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(2px);
+  transform: translateY(6px);
+}
+
+/* Layout transition (simpler fade) */
+.layout-enter-active,
+.layout-leave-active {
+  transition: all var(--duration-medium) var(--ease-indie);
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+  filter: blur(2px);
 }
