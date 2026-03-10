@@ -2,9 +2,13 @@
 FROM node:20-slim AS builder
 
 # 1. Instalando dependências de compilação
+
 RUN apt-get update && apt-get install -y \
     python3 make g++ gcc build-essential sqlite3 libsqlite3-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# Instala pnpm globalmente
+RUN npm install -g pnpm
 
 WORKDIR /app
 
