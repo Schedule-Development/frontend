@@ -2,7 +2,7 @@ FROM node:20-slim AS builder
 
 # Install build essentials for better-sqlite3
 RUN apt-get update && apt-get install -y \
-    python3 make g++ gcc build-essential sqlite3 \
+    python3 make g++ gcc build-essential sqlite3 libsqlite3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN corepack enable && corepack prepare pnpm@latest --activate

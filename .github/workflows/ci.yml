@@ -10,7 +10,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /caminho/do/seu/projeto
+            cd /home/geral/saas-landing-page
             git pull origin main
             # docker compose down
             # docker compose up -d --build
