@@ -1,7 +1,20 @@
+name: Deploy
+
+# dispara toda vez que algo é empurrado para main
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # opcional, mas ajuda a ligar o commit atual ao log da action
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Deploy via SSH (git pull)
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -10,7 +23,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            set -e         # erro aborta a execução
             cd /home/geral/saas-landing-page
             git pull origin main
-            # docker compose down
-            # docker compose up -d --build
+            # docker-compose down
+            # docker-compose up -d --build

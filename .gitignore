@@ -25,3 +25,11 @@ logs
 
 # VSC
 .history
+
+# Project-specific ephemeral files
+backups/
+ssh-output.txt
+projeto.tar.gz
+check-status.sh
+diagnose.sh
+ssh_check.py
