@@ -1,8 +1,8 @@
 import Stripe from 'stripe'
 
 /**
- * Mapear planos para IDs de preço do Stripe.
- * Preços em BRL (Real Brasileiro) configurados em modo test.
+ * Map plans to Stripe price IDs.
+ * Prices configured for BRL (test mode values).
  */
 const STRIPE_PRICE_IDS: Record<string, { month: string; year: string }> = {
   starter: {
@@ -29,11 +29,11 @@ export default defineEventHandler(async (event) => {
     const { planTitle, cycle, email, userId, organizationId } = body
     const cycleNumber = Number(cycle)
 
-    // Validar inputs
+    // Validate inputs
     if (!planTitle || typeof cycle === 'undefined') {
       throw createError({
         statusCode: 400,
-        statusMessage: 'planTitle e cycle são obrigatórios'
+        statusMessage: 'planTitle and cycle are required'
       })
     }
 
@@ -43,13 +43,13 @@ export default defineEventHandler(async (event) => {
     if (!priceIds) {
       throw createError({
         statusCode: 400,
-        statusMessage: `Plano não encontrado: ${planTitle}`
+        statusMessage: `Plan not found: ${planTitle}`
       })
     }
 
     const priceId = cycleNumber === 1 ? priceIds.year : priceIds.month
 
-    // Criar sessão de checkout
+    // Create checkout session
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
@@ -76,10 +76,10 @@ export default defineEventHandler(async (event) => {
 
     return { url: session.url }
   } catch (error) {
-    console.error('Erro ao criar sessão Stripe:', error)
+    console.error('Error creating Stripe session:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: error instanceof Error ? error.message : 'Erro ao criar sessão de checkout'
+      statusMessage: error instanceof Error ? error.message : 'Error creating checkout session'
     })
   }
 })

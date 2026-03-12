@@ -31,30 +31,32 @@ const isScrolled = computed(() => isMounted.value && y.value > 20)
       :class="[
         'transition-all duration-[var(--duration-fast)] ease-[var(--ease-indie)] flex items-center justify-between px-6',
         isScrolled
-          ? 'w-[90%] max-w-5xl bg-white/70 backdrop-blur-md border border-gray-200/50 rounded-full h-14 shadow-sm'
+          ? 'w-[90%] max-w-5xl bg-[#0B1F3A]/80 backdrop-blur-md border border-white/10 rounded-full h-14 shadow-sm'
           : 'w-full bg-transparent h-20'
       ]"
     >
       <div
-        class="flex items-center gap-4 transition-colors duration-300 text-[#1F1F20]"
+        class="flex items-center gap-4 transition-colors duration-300 text-white"
       >
         <NuxtLink
           to="/"
-          class="flex items-center gap-2"
+          class="flex items-center gap-2 group outline-none"
         >
-          <AppLogo class="w-auto h-8 shrink-0" />
+          <div class="relative flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <img src="/logo-nodix.png" alt="Nodix" class="h-7 md:h-8 w-auto drop-shadow-sm" />
+          </div>
         </NuxtLink>
       </div>
 
       <div
-        class="hidden md:flex items-center gap-8 text-sm font-medium transition-colors text-gray-500"
+        class="hidden md:flex items-center gap-8 text-sm font-medium transition-colors text-gray-300"
       >
         <NuxtLink
           v-for="item in items"
           :key="item.to"
           :to="item.to"
-          class="transition hover:text-gray-900"
-          active-class="!text-gray-900 font-semibold"
+          class="transition hover:text-white"
+          active-class="!text-white font-semibold flex flex-col after:content-[''] after:w-full after:h-0.5 after:bg-[#FF6A00] after:mt-1 after:-mb-1.5"
         >
           {{ item.label }}
         </NuxtLink>
@@ -66,11 +68,11 @@ const isScrolled = computed(() => isMounted.value && y.value > 20)
           color="neutral"
           variant="ghost"
           to="/login"
-          :class="isScrolled ? 'hidden sm:flex hover:bg-gray-50 !text-gray-500 font-medium' : 'flex !text-gray-500 font-medium hover:bg-gray-50'"
+          :class="isScrolled ? 'hidden sm:flex hover:bg-white/10 !text-gray-300 font-medium' : 'flex !text-gray-300 font-medium hover:bg-white/10'"
         />
         <UButton
           label="Sign up"
-          class="!bg-[#111827] hover:!bg-black !text-white rounded-full transition-all duration-400 font-medium shadow-sm hover:-translate-y-0.5"
+          class="!bg-[#FF6A00] hover:!bg-[#FF8533] !text-white rounded-full transition-all duration-400 font-bold shadow-md hover:-translate-y-0.5 px-6 border-none"
           variant="solid"
           to="/signup"
         />

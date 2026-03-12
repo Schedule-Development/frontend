@@ -11,7 +11,7 @@ const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
 useSeoMeta({ title, ogTitle: title, description, ogDescription: description })
 
-// --- Lógica de Estado ---
+// --- State logic ---
 const isYearly = ref(false)
 const router = useRouter()
 const clickingPlan = ref<number | null>(null)
@@ -101,7 +101,7 @@ const cardMotion = (index: number) => ({
 </style>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-[#FAFAFA] font-sans selection:bg-brand-primary selection:text-[#1F1F20] pt-24 pb-20">
+  <div class="relative min-h-screen overflow-hidden bg-[#0B1F3A] font-sans selection:bg-[#FF6A00] selection:text-white pt-24 pb-20 text-white">
     <div class="absolute inset-0 pointer-events-none -z-10" style="background: radial-gradient(600px circle at 50% 30%, rgba(59,130,246,0.06), transparent 60%);" />
 
     <div
@@ -114,7 +114,7 @@ const cardMotion = (index: number) => ({
           v-motion
           :initial="baseMotion.initial"
           :visible-once="baseMotion.visible"
-          class="text-4xl md:text-5xl font-extrabold text-[#111827] tracking-tight mb-6"
+          class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6"
         >
           {{ page.title }}
         </h1>
@@ -122,9 +122,9 @@ const cardMotion = (index: number) => ({
           v-motion
           :initial="{ opacity: 0, y: 20 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 1000, delay: 100, easing: [0.16, 1, 0.3, 1] } }"
-          class="text-lg md:text-xl text-[#4B5563] font-medium leading-relaxed max-w-2xl mx-auto"
+          class="text-lg md:text-xl text-gray-300 font-medium leading-relaxed max-w-2xl mx-auto"
         >
-          {{ page.description }}
+          No hidden fees. Choose the ideal plan to boost your barbershop today.
         </p>
 
         <!-- Micro-interações na Troca Mensal/Anual com Badge -->
@@ -134,12 +134,12 @@ const cardMotion = (index: number) => ({
           :visible-once="{ opacity: 1, scale: 1, y: 0, transition: { duration: 1000, delay: 200, easing: [0.16, 1, 0.3, 1] } }"
           class="mt-14 flex items-center justify-center gap-4"
         >
-          <span :class="['text-sm font-semibold transition-colors duration-400', !isYearly ? 'text-[#1F1F20]' : 'text-[#6B7280]']">Mensal</span>
+          <span :class="['text-sm font-semibold transition-colors duration-400', !isYearly ? 'text-white' : 'text-gray-400']">Monthly</span>
 
           <button
-            class="relative inline-flex h-8 w-16 items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B4C7E] focus-visible:ring-offset-2"
+            class="relative inline-flex h-8 w-16 items-center rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
             style="transition: all var(--duration-fast) var(--ease-indie);"
-            :class="isYearly ? 'bg-[#2B4C7E]' : 'bg-[#E5E7EB] border border-[#D1D5DB]'"
+            :class="isYearly ? 'bg-[#FF6A00]' : 'bg-[#1F2937] border border-white/10'"
             @click="isYearly = !isYearly"
             aria-label="Toggle billing period"
           >
@@ -151,14 +151,14 @@ const cardMotion = (index: number) => ({
           </button>
 
           <div class="relative flex items-center gap-3">
-            <span :class="['text-sm font-semibold transition-colors duration-400', isYearly ? 'text-[#1F1F20]' : 'text-[#6B7280]']">Anual</span>
+            <span :class="['text-sm font-semibold transition-colors duration-400', isYearly ? 'text-white' : 'text-gray-400']">Yearly</span>
             <!-- Badge Save 20% -->
             <div class="absolute left-full ml-4 w-max">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-semibold whitespace-nowrap border border-blue-100 shadow-sm relative group cursor-default transition-transform hover:scale-105">
                 <UIcon
                   name="i-heroicons-sparkles"
                   class="w-3.5 h-3.5"
-                /> 2 meses off
+                /> Save 2 months
               </span>
             </div>
           </div>
@@ -184,8 +184,7 @@ const cardMotion = (index: number) => ({
             <div
               :class="[
                 'relative h-full p-8 md:p-10 rounded-3xl flex flex-col transition-all duration-400',
-                'bg-white border',
-                plan.highlight ? 'border-gray-200' : 'border-gray-100'
+                'bg-[#1F2937]/50 backdrop-blur-md border border-white/10 text-white'
               ]"
             >
 
@@ -200,10 +199,10 @@ const cardMotion = (index: number) => ({
               </div>
 
               <div class="mb-10 relative z-10">
-                <h3 class="text-2xl font-bold text-[#111827] mb-2 group-hover:text-[#2B4C7E] transition-colors">
+                <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-[#FF6A00] transition-colors">
                   {{ plan.title }}
                 </h3>
-                <p class="text-sm text-[#4B5563] h-10 leading-relaxed md:w-11/12">
+                <p class="text-sm text-gray-400 h-10 leading-relaxed md:w-11/12">
                   {{ plan.description }}
                 </p>
               </div>
@@ -213,11 +212,11 @@ const cardMotion = (index: number) => ({
                 <!-- Transition no Value -->
                 <div class="overflow-hidden flex items-baseline min-w-[120px]">
                   <Transition name="price" mode="out-in">
-                    <h4 :key="isYearly ? 'yearly' : 'monthly'" class="text-5xl font-extrabold tracking-tight text-[#111827] transition-colors">
+                    <h4 :key="isYearly ? 'yearly' : 'monthly'" class="text-5xl font-extrabold tracking-tight text-white transition-colors">
                       {{ getDisplayPrice(plan) }}
                     </h4>
                   </Transition>
-                  <span class="text-[#6B7280] font-medium text-lg ml-2">/ {{ isYearly ? 'ano' : 'mês' }}</span>
+                  <span class="text-gray-400 font-medium text-lg ml-2">/ {{ isYearly ? 'year' : 'month' }}</span>
                 </div>
               </div>
 
@@ -228,13 +227,13 @@ const cardMotion = (index: number) => ({
                     :key="i"
                     class="flex items-start gap-4 group/item"
                   >
-                    <div class="mt-0.5 rounded-full p-1 shrink-0 flex items-center justify-center text-[#2B4C7E] bg-blue-50 transition-transform duration-400 group-hover/item:scale-110">
+                    <div class="mt-0.5 rounded-full p-1 shrink-0 flex items-center justify-center text-[#FF6A00] bg-orange-500/10 transition-transform duration-400 group-hover/item:scale-110">
                       <UIcon
                         name="i-heroicons-check-solid"
                         class="w-3.5 h-3.5"
                       />
                     </div>
-                    <span class="text-[15px] font-medium text-[#374151]">{{ feature }}</span>
+                    <span class="text-[15px] font-medium text-gray-300">{{ feature }}</span>
                   </li>
                 </ul>
               </div>
@@ -247,8 +246,8 @@ const cardMotion = (index: number) => ({
                   class="rounded-xl tracking-wide transition-all duration-400 w-full h-[52px] flex justify-center items-center"
                   :class="[
                     plan.highlight
-                      ? 'bg-[#111827] hover:bg-black text-white font-semibold shadow-[0_4px_14px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.1)] hover:-translate-y-0.5'
-                      : 'bg-white hover:bg-gray-50 text-gray-700 font-medium border border-gray-200 shadow-sm hover:border-gray-300 hover:-translate-y-0.5',
+                      ? 'bg-[#FF6A00] hover:bg-[#FF8533] text-white font-semibold shadow-[0_4px_14px_rgba(255,106,0,0.15)] hover:shadow-[0_6px_20px_rgba(255,106,0,0.25)] hover:-translate-y-0.5 border-none'
+                      : 'bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 shadow-sm hover:-translate-y-0.5',
                     clickingPlan === index ? 'scale-[0.97]' : ''
                   ]"
                   @click="handlePlanClick(index, plan)"
@@ -271,20 +270,11 @@ const cardMotion = (index: number) => ({
         <div class="flex items-center gap-2.5 transition-transform hover:-translate-y-0.5 duration-400 cursor-default">
           <div class="text-gray-400">
             <UIcon
-              name="i-heroicons-credit-card"
-              class="w-4 h-4"
-            />
-          </div>
-          Sem cartão de crédito
-        </div>
-        <div class="flex items-center gap-2.5 transition-transform hover:-translate-y-0.5 duration-400 cursor-default">
-          <div class="text-gray-400">
-            <UIcon
               name="i-heroicons-arrow-path"
               class="w-4 h-4"
             />
           </div>
-          Cancele quando quiser
+          Cancel anytime
         </div>
         <div class="flex items-center gap-2.5 transition-transform hover:-translate-y-0.5 duration-400 cursor-default">
           <div class="text-gray-400">
@@ -293,7 +283,7 @@ const cardMotion = (index: number) => ({
               class="w-4 h-4"
             />
           </div>
-          Pagamento seguro
+          Secure payment
         </div>
       </div>
 
@@ -305,11 +295,11 @@ const cardMotion = (index: number) => ({
         class="mt-32 max-w-4xl mx-auto px-4 md:px-0"
       >
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold text-[#111827] tracking-tight mb-3">
-            Compare os Planos
+          <h2 class="text-3xl font-bold text-white tracking-tight mb-3">
+            Compare Plans
           </h2>
-          <p class="text-[#4B5563] text-lg">
-            Transparência total no que oferecemos.
+          <p class="text-gray-400 text-lg">
+            Complete transparency in what we offer.
           </p>
         </div>
 
@@ -318,99 +308,99 @@ const cardMotion = (index: number) => ({
           v-motion
           :initial="{ opacity: 0, y: 15 }"
           :visible-once="{ opacity: 1, y: 0, transition: { duration: 800, delay: 100, easing: [0.16, 1, 0.3, 1] } }"
-          class="bg-white border border-gray-100 rounded-3xl shadow-sm overflow-hidden"
+          class="bg-[#1F2937]/30 border border-white/10 rounded-3xl shadow-sm overflow-hidden backdrop-blur-md"
         >
           <div class="overflow-x-auto scrollbar-hide pb-2">
             <table class="w-full text-left border-collapse min-w-[700px]">
               <!-- Cabeçalho Sticky -->
-              <thead class="sticky top-20 bg-white/95 backdrop-blur z-20 border-b border-gray-100">
+              <thead class="sticky top-20 bg-[#0B1F3A]/95 backdrop-blur z-20 border-b border-white/10">
                 <tr>
-                  <th class="p-6 md:p-8 font-semibold text-gray-500 w-[34%] text-xs tracking-wider uppercase">
-                    Funcionalidades
+                  <th class="p-6 md:p-8 font-semibold text-gray-400 w-[34%] text-xs tracking-wider uppercase">
+                    Features
                   </th>
-                  <th class="p-6 md:p-8 font-bold text-[#111827] text-center w-[22%] text-base">
-                    Iniciante
+                  <th class="p-6 md:p-8 font-bold text-white text-center w-[22%] text-base">
+                    Starter
                   </th>
-                  <th class="p-6 md:p-8 font-bold text-[#2B4C7E] text-center w-[22%] text-base bg-blue-50/30">
-                    Profissional
+                  <th class="p-6 md:p-8 font-bold text-[#FF6A00] text-center w-[22%] text-base bg-white/5">
+                    Professional
                   </th>
-                  <th class="p-6 md:p-8 font-bold text-[#111827] text-center w-[22%] text-base">
-                    Equipa
+                  <th class="p-6 md:p-8 font-bold text-white text-center w-[22%] text-base">
+                    Team
                   </th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-50 text-[15px]">
+              <tbody class="divide-y divide-white/5 text-[15px]">
                 <!-- Linhas da Tabela -->
-                <tr class="hover:bg-gray-50/50 transition-colors duration-400 group">
-                  <td class="p-6 font-medium text-[#111827]">
-                    Agendamentos Mensais
+                <tr class="hover:bg-white/5 transition-colors duration-400 group">
+                  <td class="p-6 font-medium text-white">
+                    Monthly bookings
                   </td>
-                  <td class="p-6 text-center text-gray-500">
-                    Até 100
+                  <td class="p-6 text-center text-gray-400">
+                    Up to 100
                   </td>
-                  <td class="p-6 text-center font-bold text-[#111827] align-middle bg-blue-50/30">
-                    Ilimitados
+                  <td class="p-6 text-center font-bold text-white align-middle bg-white/5">
+                    Unlimited
                   </td>
-                  <td class="p-6 text-center text-[#111827] font-medium">
-                    Ilimitados
+                  <td class="p-6 text-center text-white font-medium">
+                    Unlimited
                   </td>
                 </tr>
-                <tr class="hover:bg-gray-50/50 transition-colors duration-400 group">
-                  <td class="p-6 font-medium text-[#111827]">
-                    Lembretes WhatsApp
+                <tr class="hover:bg-white/5 transition-colors duration-400 group">
+                  <td class="p-6 font-medium text-white">
+                    WhatsApp reminders
                   </td>
                   <td class="p-6 text-center align-middle">
                     <UIcon
                       name="i-heroicons-minus"
-                      class="w-5 h-5 mx-auto text-gray-300"
+                      class="w-5 h-5 mx-auto text-gray-600"
                     />
                   </td>
-                  <td class="p-6 text-center align-middle bg-blue-50/30">
-                    <div class="inline-flex rounded-full bg-blue-50 p-1 group-hover:scale-110 transition-transform duration-400">
+                  <td class="p-6 text-center align-middle bg-white/5">
+                    <div class="inline-flex rounded-full bg-orange-500/10 p-1 group-hover:scale-110 transition-transform duration-400">
                       <UIcon
                         name="i-heroicons-check-solid"
-                        class="w-4 h-4 mx-auto text-[#2B4C7E]"
+                        class="w-4 h-4 mx-auto text-[#FF6A00]"
                       />
                     </div>
                   </td>
                   <td class="p-6 text-center align-middle">
-                    <div class="inline-flex rounded-full bg-blue-50 p-1">
+                    <div class="inline-flex rounded-full bg-orange-500/10 p-1">
                       <UIcon
                         name="i-heroicons-check-solid"
-                        class="w-4 h-4 mx-auto text-[#2B4C7E]"
+                        class="w-4 h-4 mx-auto text-[#FF6A00]"
                       />
                     </div>
                   </td>
                 </tr>
-                <tr class="hover:bg-gray-50/50 transition-colors duration-400 group">
-                  <td class="p-6 font-medium text-[#111827]">
-                    Dashboard de Lucros
+                <tr class="hover:bg-white/5 transition-colors duration-400 group">
+                  <td class="p-6 font-medium text-white">
+                    Revenue dashboard
                   </td>
                   <td class="p-6 text-center align-middle">
                     <UIcon
                       name="i-heroicons-minus"
-                      class="w-5 h-5 mx-auto text-gray-300"
+                      class="w-5 h-5 mx-auto text-gray-600"
                     />
                   </td>
-                  <td class="p-6 text-center align-middle bg-blue-50/30">
-                    <div class="inline-flex rounded-full bg-blue-50 p-1 group-hover:scale-110 transition-transform duration-400">
+                  <td class="p-6 text-center align-middle bg-white/5">
+                    <div class="inline-flex rounded-full bg-orange-500/10 p-1 group-hover:scale-110 transition-transform duration-400">
                       <UIcon
                         name="i-heroicons-check-solid"
-                        class="w-4 h-4 mx-auto text-[#2B4C7E]"
+                        class="w-4 h-4 mx-auto text-[#FF6A00]"
                       />
                     </div>
                   </td>
                   <td class="p-6 text-center align-middle">
-                    <div class="inline-flex rounded-full bg-blue-50 p-1">
+                    <div class="inline-flex rounded-full bg-orange-500/10 p-1">
                       <UIcon
                         name="i-heroicons-check-solid"
-                        class="w-4 h-4 mx-auto text-[#2B4C7E]"
+                        class="w-4 h-4 mx-auto text-[#FF6A00]"
                       />
                     </div>
                   </td>
                 </tr>
               </tbody>
-              <tfoot class="border-t border-gray-100 bg-gray-50/50">
+              <tfoot class="border-t border-white/10 bg-[#1F2937]/30">
                 <tr>
                   <td class="p-6" />
                   <td class="p-6 text-center align-middle">
@@ -419,14 +409,14 @@ const cardMotion = (index: number) => ({
                       color="neutral"
                       size="sm"
                       @click="router.push('/signup')"
-                      class="font-medium text-gray-500 hover:text-[#111827] transition-colors duration-400"
+                      class="font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors duration-400"
                     >
-                      Testar Iniciante
+                      Start Starter
                     </UButton>
                   </td>
-                  <td class="p-6 text-center align-middle bg-blue-50/30">
-                    <button @click="router.push('/signup')" class="bg-[#111827] hover:bg-black text-white px-5 py-2.5 rounded-xl font-semibold transition-all duration-400 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 w-full whitespace-nowrap">
-                      Assinar Agora
+                  <td class="p-6 text-center align-middle bg-white/5">
+                    <button @click="router.push('/signup')" class="bg-[#FF6A00] hover:bg-[#FF8533] text-white px-5 py-2.5 rounded-xl font-semibold transition-all duration-400 shadow-sm hover:shadow hover:-translate-y-0.5 active:translate-y-0 w-full whitespace-nowrap">
+                      Subscribe Now
                     </button>
                   </td>
                   <td class="p-6 text-center align-middle">
@@ -435,9 +425,9 @@ const cardMotion = (index: number) => ({
                       color="neutral"
                       size="sm"
                       @click="router.push('/signup')"
-                      class="font-medium text-gray-500 hover:text-[#111827] transition-colors duration-400"
+                      class="font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors duration-400"
                     >
-                      Testar Equipa
+                      Start Team
                     </UButton>
                   </td>
                 </tr>

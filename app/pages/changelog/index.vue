@@ -22,7 +22,8 @@ defineOgImageComponent('Saas')
 </script>
 
 <template>
-  <UContainer>
+  <div class="bg-[#0B1F3A] min-h-screen text-white pt-20">
+    <UContainer>
     <UPageHeader
       v-bind="page"
       class="py-[50px]"
@@ -42,4 +43,5 @@ defineOgImageComponent('Saas')
       </UChangelogVersions>
     </UPageBody>
   </UContainer>
+  </div>
 </template>

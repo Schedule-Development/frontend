@@ -21,13 +21,13 @@ const fields = [
     name: 'fullName',
     type: 'text' as const,
     label: 'Full name',
-    placeholder: 'João Silva'
+    placeholder: 'John Doe'
   },
   {
     name: 'email',
     type: 'text' as const,
     label: 'Email',
-    placeholder: 'voce@exemplo.com'
+    placeholder: 'you@example.com'
   },
   {
     name: 'password',
@@ -60,7 +60,7 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
     toast.add({
       title: 'Success',
       description: 'Account created successfully!',
-      color: 'green'
+      color: 'blue'
     })
 
     // Redirecionar direto para o Stripe se veio com plano selecionado
@@ -104,27 +104,43 @@ async function onSubmit(payload: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <UAuthForm
-    :fields="fields"
-    :schema="schema"
-    title="Create an account"
-    :submit="{ label: 'Create account', loading: isLoading }"
-    @submit="onSubmit"
-  >
-    <template #description>
-      Already have an account?
-      <ULink
-        to="/login"
-        class="text-primary font-medium"
-      >Login</ULink>.
-    </template>
+  <div class="flex flex-col items-center">
+    <!-- Logo -->
+    <NuxtLink to="/" class="mb-8 transition-transform hover:scale-105">
+      <img src="/logo-nodix.png" alt="Nodix" class="h-10 w-auto" />
+    </NuxtLink>
 
-    <template #footer>
-      By signing up, you agree to our
-      <ULink
-        to="/"
-        class="text-primary font-medium"
-      >Terms of Service</ULink>.
-    </template>
-  </UAuthForm>
+    <UAuthForm
+      :fields="fields"
+      :schema="schema"
+      title="Create your professional account"
+      :submit="{ label: 'Start Now', loading: isLoading }"
+      class="w-full"
+      :ui="{
+        title: 'text-2xl font-bold text-white text-center mb-2',
+        description: 'text-gray-400 text-center mb-8',
+        submit: 'bg-[#FF6A00] hover:bg-[#FF8533] text-white font-bold h-12 rounded-xl transition-all shadow-lg hover:shadow-[0_8px_20px_-6px_rgba(255,106,0,0.4)]',
+        input: 'bg-white/5 border-white/10 text-white placeholder-gray-500 focus:ring-[#FF6A00] focus:border-[#FF6A00] h-11 rounded-lg'
+      }"
+      @submit="onSubmit"
+    >
+      <template #description>
+        Join more than 500 elite professionals.
+      </template>
+
+      <template #footer>
+        <span class="text-gray-300">Already have an account?</span>
+        <ULink
+          to="/login"
+          class="text-[#FF6A00] hover:text-[#FF8533] font-bold transition-colors ml-1"
+        >Sign in</ULink>
+      </template>
+    </UAuthForm>
+
+    <p class="mt-8 text-xs text-gray-400 text-center max-w-[280px] leading-relaxed">
+      By creating an account, you agree to our 
+      <ULink to="/" class="text-white hover:text-gray-300 underline underline-offset-2">Terms of Service</ULink> 
+      and <ULink to="/" class="text-white hover:text-gray-300 underline underline-offset-2">Privacy Policy</ULink>.
+    </p>
+  </div>
 </template>

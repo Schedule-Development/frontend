@@ -7,72 +7,85 @@
 @theme static {
   --font-sans: "Roboto Slab", serif;
 
-  /* App Palette "High-End Pika" (Apple / Premium SaaS Style) */
-  --color-brand-dark: #1F1F20;      /* Textos e letras */
-  --color-brand-primary: #2B4C7E;   /* Botões em destaque */
-  --color-brand-accent: #567EBB;    /* Destaques e links */
-  --color-brand-muted: #606D80;     /* Contornos se necessário */
-  --color-brand-surface: #DCE0E6;   /* Cor predominante do fundo */
+  /* App Palette "Nodix Core" (Confiança + Energia) */
+  --color-brand-dark: #FFFFFF;      /* Texto Branco principal para dark mode */
+  --color-brand-primary: #0B1F3A;   /* Azul-marinho */
+  --color-brand-accent: #FF6A00;    /* Laranja Nodix (CTA) */
+  --color-brand-muted: #1F2937;     /* Cinza bordas e cards */
+  --color-brand-surface: #0B1F3A;   /* Fundo Azul Marinho Global */
   
-  --color-light-surface: #DCE0E6;
-  --color-card-glass: rgba(255, 255, 255, 0.7);
+  --color-light-surface: #0B1F3A;
+  --color-card-glass: rgba(31, 41, 55, 0.7);
 
   /* Semantic Colors - Apenas para feedback visual */
   --color-semantic-success: #10B981;
   --color-semantic-error: #EF4444;
   --color-semantic-warning: #D97706;
 
-  /* Hakcing Nuxt UI: Redefinindo o azul padrão do Tailwind para o SEU azul (#2B4C7E) */
-  --color-blue-50: #DCE0E6;
-  --color-blue-100: #DCE0E6;
-  --color-blue-200: #DCE0E6;
-  --color-blue-300: #567EBB;
-  --color-blue-400: #567EBB;
-  --color-blue-500: #2B4C7E;
-  --color-blue-600: #567EBB;
-  --color-blue-700: #2B4C7E;
-  --color-blue-800: #1F1F20;
-  --color-blue-900: #1F1F20;
-  --color-blue-950: #1F1F20;
+  /* Hakcing Nuxt UI: Redefinindo o azul padrão do Tailwind para o Azul-marinho (#0B1F3A) */
+  --color-blue-50: #F6F8FC;
+  --color-blue-100: #E5E7EB;
+  --color-blue-200: #E5E7EB;
+  --color-blue-300: #E5E7EB;
+  --color-blue-400: #E5E7EB;
+  --color-blue-500: #0B1F3A;
+  --color-blue-600: #0B1F3A;
+  --color-blue-700: #0B1F3A;
+  --color-blue-800: #1F2937;
+  --color-blue-900: #1F2937;
+  --color-blue-950: #1F2937;
 
   /* Hacking Nuxt UI: Redefinindo o stone (cinza base) para as SUAS cores base */
-  --color-stone-50: #DCE0E6;
-  --color-stone-100: #DCE0E6;
-  --color-stone-200: #DCE0E6;
-  --color-stone-300: #606D80;
-  --color-stone-400: #606D80;
-  --color-stone-500: #606D80;
-  --color-stone-600: #1F1F20;
-  --color-stone-700: #1F1F20;
-  --color-stone-800: #1F1F20;
-  --color-stone-900: #1F1F20;
-  --color-stone-950: #1F1F20;
+  --color-stone-50: #0B1F3A;
+  --color-stone-100: #0B1F3A;
+  --color-stone-200: #1F2937;
+  --color-stone-300: #1F2937;
+  --color-stone-400: #1F2937;
+  --color-stone-500: #1F2937;
+  --color-stone-600: #FFFFFF;
+  --color-stone-700: #FFFFFF;
+  --color-stone-800: #FFFFFF;
+  --color-stone-900: #FFFFFF;
+  --color-stone-950: #FFFFFF;
 
   /* Escala obrigatória exigida pelo Nuxt UI para cor principal (Mapeado estritamente para as suas cores) */
-  --color-brand-primary-50: #DCE0E6;
-  --color-brand-primary-100: #DCE0E6;
-  --color-brand-primary-200: #DCE0E6;
-  --color-brand-primary-300: #567EBB;
-  --color-brand-primary-400: #567EBB;
-  --color-brand-primary-500: #2B4C7E;
-  --color-brand-primary-600: #567EBB;
-  --color-brand-primary-700: #2B4C7E;
-  --color-brand-primary-800: #1F1F20;
-  --color-brand-primary-900: #1F1F20;
-  --color-brand-primary-950: #1F1F20;
+  --color-brand-primary-50: #F6F8FC;
+  --color-brand-primary-100: #E5E7EB;
+  --color-brand-primary-200: #E5E7EB;
+  --color-brand-primary-300: #E5E7EB;
+  --color-brand-primary-400: #E5E7EB;
+  --color-brand-primary-500: #0B1F3A;
+  --color-brand-primary-600: #0B1F3A;
+  --color-brand-primary-700: #0B1F3A;
+  --color-brand-primary-800: #1F2937;
+  --color-brand-primary-900: #1F2937;
+  --color-brand-primary-950: #1F2937;
+
+  /* Hacking Orange para o Laranja Nodix (CTA) */
+  --color-orange-50: #FFF3EB;
+  --color-orange-100: #FFE4CD;
+  --color-orange-200: #FFC999;
+  --color-orange-300: #FFA85E;
+  --color-orange-400: #FF8533;
+  --color-orange-500: #FF6A00;
+  --color-orange-600: #E65F00;
+  --color-orange-700: #CC5500;
+  --color-orange-800: #994000;
+  --color-orange-900: #662B00;
+  --color-orange-950: #4D2000;
 
   /* Escala obrigatória exigida pelo Nuxt UI para cor base (Mapeado estritamente para as suas cores) */
-  --color-brand-muted-50: #DCE0E6;
-  --color-brand-muted-100: #DCE0E6;
-  --color-brand-muted-200: #DCE0E6;
-  --color-brand-muted-300: #606D80;
-  --color-brand-muted-400: #606D80;
-  --color-brand-muted-500: #606D80;
-  --color-brand-muted-600: #1F1F20;
-  --color-brand-muted-700: #1F1F20;
-  --color-brand-muted-800: #1F1F20;
-  --color-brand-muted-900: #1F1F20;
-  --color-brand-muted-950: #1F1F20;
+  --color-brand-muted-50: #0B1F3A;
+  --color-brand-muted-100: #0B1F3A;
+  --color-brand-muted-200: #1F2937;
+  --color-brand-muted-300: #1F2937;
+  --color-brand-muted-400: #1F2937;
+  --color-brand-muted-500: #1F2937;
+  --color-brand-muted-600: #FFFFFF;
+  --color-brand-muted-700: #FFFFFF;
+  --color-brand-muted-800: #FFFFFF;
+  --color-brand-muted-900: #FFFFFF;
+  --color-brand-muted-950: #FFFFFF;
 
   /* Animations */
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
@@ -136,17 +149,17 @@
   }
 }
 
-/* Base Light Mode - High End Look */
+/* Base Dark Component Mode - High End Look */
 :root {
-  --ui-bg: var(--color-brand-surface);
-  --ui-bg-muted: var(--color-brand-surface);
-  --ui-bg-elevated: #ffffff;
-  --ui-bg-accented: var(--color-brand-surface);
-  --ui-border: var(--color-brand-muted);
-  --ui-border-accented: var(--color-brand-muted);
+  --ui-bg: #0B1F3A;
+  --ui-bg-muted: #0B1F3A;
+  --ui-bg-elevated: #1F2937;
+  --ui-bg-accented: #1F2937;
+  --ui-border: rgba(255, 255, 255, 0.1);
+  --ui-border-accented: rgba(255, 255, 255, 0.2);
   
   /* Sobrescrever Nuxt UI fallbacks para evitar o verde */
-  --ui-primary: var(--color-brand-primary-500);
+  --ui-primary: var(--color-brand-accent);
 }
 
 body {

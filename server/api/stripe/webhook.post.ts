@@ -1,33 +1,33 @@
 import Stripe from 'stripe'
 
 /**
- * Webhook para processar eventos de pagamento do Stripe.
- * 
- * Eventos processados:
- * - checkout.session.completed: quando o pagamento é bem-sucedido
- * - customer.subscription.updated: quando a assinatura é renovada
- * - customer.subscription.deleted: quando a assinatura é cancelada
+ * Webhook to process Stripe payment events.
+ *
+ * Handled events:
+ * - checkout.session.completed: when a payment succeeds
+ * - customer.subscription.updated: when a subscription is renewed/updated
+ * - customer.subscription.deleted: when a subscription is cancelled
  */
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const stripe = new Stripe(config.stripeSecretKey, { apiVersion: '2026-02-25.clover' })
 
   try {
-    // Ler dados brutos do webhook
+    // Read raw webhook body
     const body = await readRawBody(event)
     if (!body) {
       throw createError({
         statusCode: 400,
-        statusMessage: 'Body vazio'
+        statusMessage: 'Empty body'
       })
     }
 
-    // Verificar assinatura do webhook usando a secret
+    // Verify webhook signature using the secret
     const signature = getHeader(event, 'stripe-signature')
     if (!signature) {
       throw createError({
         statusCode: 400,
-        statusMessage: 'Assinatura do webhook não encontrada'
+        statusMessage: 'Webhook signature not found'
       })
     }
 
@@ -39,10 +39,10 @@ export default defineEventHandler(async (event) => {
         config.stripeWebhookSecret
       )
     } catch (err) {
-      console.error('Erro ao verificar assinatura do webhook:', err)
+      console.error('Error verifying webhook signature:', err)
       throw createError({
         statusCode: 400,
-        statusMessage: 'Assinatura do webhook inválida'
+        statusMessage: 'Invalid webhook signature'
       })
     }
 
@@ -68,10 +68,10 @@ export default defineEventHandler(async (event) => {
 
     return { received: true }
   } catch (error) {
-    console.error('[Webhook] Erro:', error)
+    console.error('[Webhook] Error:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: error instanceof Error ? error.message : 'Erro ao processar webhook'
+      statusMessage: error instanceof Error ? error.message : 'Error processing webhook'
     })
   }
 })
@@ -84,7 +84,7 @@ export default defineEventHandler(async (event) => {
  */
 async function handleCheckoutSessionCompleted(config: ReturnType<typeof useRuntimeConfig>, session: Stripe.Checkout.Session) {
   try {
-    console.log(`[Checkout] Session completada: ${session.id}`)
+    console.log(`[Checkout] Session completed: ${session.id}`)
     console.log(`[Checkout] Email: ${session.customer_email}`)
     console.log(`[Checkout] Metadata:`, session.metadata)
 
@@ -112,7 +112,7 @@ async function handleCheckoutSessionCompleted(config: ReturnType<typeof useRunti
     }
 
     if (!email || !planTitle) {
-      console.warn('[Checkout] Sessao sem email/metadata (comum em stripe trigger). Evento ignorado sem erro fatal.')
+      console.warn('[Checkout] Session missing email/metadata (common in stripe triggers). Event ignored without fatal error.')
       return
     }
 
@@ -134,7 +134,7 @@ async function handleCheckoutSessionCompleted(config: ReturnType<typeof useRunti
     await relayToNodix(config, payload)
 
   } catch (error) {
-    console.error('[Checkout] Erro ao processar sessão completa:', error)
+    console.error('[Checkout] Error processing completed session:', error)
     throw error
   }
 }
@@ -145,7 +145,7 @@ async function handleCheckoutSessionCompleted(config: ReturnType<typeof useRunti
  */
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
   try {
-    console.log(`[Subscription] Atualizada: ${subscription.id}`)
+    console.log(`[Subscription] Updated: ${subscription.id}`)
     console.log(`[Subscription] Status: ${subscription.status}`)
 
     // TODO: Implementar lógica
@@ -154,7 +154,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
     // 3. Enviar email se houver mudança importante
 
   } catch (error) {
-    console.error('[Subscription] Erro ao processar atualização:', error)
+    console.error('[Subscription] Error processing update:', error)
   }
 }
 
@@ -164,7 +164,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
  */
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
   try {
-    console.log(`[Subscription] Deletada: ${subscription.id}`)
+    console.log(`[Subscription] Deleted: ${subscription.id}`)
 
     // TODO: Implementar lógica
     // 1. Marcar inscrição como cancelada no banco
@@ -172,13 +172,13 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
     // 3. Adicionar à lista de re-engagement
 
   } catch (error) {
-    console.error('[Subscription] Erro ao processar deleção:', error)
+    console.error('[Subscription] Error processing deletion:', error)
   }
 }
 
 async function relayToNodix(config: ReturnType<typeof useRuntimeConfig>, payload: Record<string, unknown>) {
   if (!config.nodixStripeWebhookUrl) {
-    console.log('[Webhook] NUXT_NODIX_STRIPE_WEBHOOK_URL nao configurada. Payload processado localmente.')
+    console.log('[Webhook] NUXT_NODIX_STRIPE_WEBHOOK_URL not configured. Processing payload locally.')
     return
   }
 
@@ -191,9 +191,9 @@ async function relayToNodix(config: ReturnType<typeof useRuntimeConfig>, payload
         'Authorization': `Bearer ${config.nodixApiToken}`
       }
     })
-    console.log('[Webhook] Payload enviado para Nodix com sucesso')
+    console.log('[Webhook] Payload sent to Nodix successfully')
   } catch (error) {
-    console.error('[Webhook] Falha ao enviar payload para Nodix:', error)
+    console.error('[Webhook] Failed to send payload to Nodix:', error)
     throw error
   }
 }

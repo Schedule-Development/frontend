@@ -4,22 +4,22 @@ plans:
   - title: Starter
     description: The essentials to organize your schedule and say goodbye to paper.
     price:
-      month: R$ 59
-      year: R$ 590
+      month: $ 12
+      year: $ 120
     features:
       - Online schedule 24/7
       - Email reminders
       - Up to 100 appointments/month
       - Email support
     button:
-      label: Start Free Trial
+      label: Start with Starter
       variant: soft
 
   - title: Professional
     description: Our most popular package with WhatsApp automation.
     price:
-      month: R$ 89
-      year: R$ 890
+      month: $ 19
+      year: $ 190
     highlight: true
     scale: true
     highlight_text: "Save 2 months"
@@ -36,8 +36,8 @@ plans:
   - title: Team
     description: For spaces with 3 or more professionals on the same schedule.
     price:
-      month: R$ 199
-      year: R$ 1990
+      month: $ 39
+      year: $ 390
     features:
       - All Professional features
       - Multiple calendars (Up to 5 barbers)
@@ -56,8 +56,8 @@ faq:
       content: Yes! You can upgrade or downgrade at any time from your account settings.
     - label: What payment methods do you accept?
       content: We accept credit/debit cards, MBWay and Multibanco reference.
-    - label: Do I need to use a credit card for the Trial?
-      content: No. We offer 14 days free to try, without asking for any payment details until then.
+    - label: Do I need a credit card to sign up?
+      content: No. You can create your account and explore the system. Payment is only required when you choose to activate a plan.
     - label: Is there a limit for WhatsApp reminders?
       content: In Professional and Team plans, reminders to clients are unlimited and work automatically without needing your phone turned on.
 

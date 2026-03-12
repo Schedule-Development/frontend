@@ -4,8 +4,8 @@ const router = useRouter()
 definePageMeta({ layout: false })
 
 useSeoMeta({
-  title: 'Pagamento cancelado',
-  description: 'Seu pagamento foi cancelado'
+  title: 'Payment cancelled',
+  description: 'Your payment was cancelled'
 })
 
 const handleRetry = () => {
@@ -28,7 +28,7 @@ const handleContactSupport = () => {
         name="i-lucide-arrow-left"
         class="w-3.5 h-3.5"
       />
-      Voltar
+      Back
     </button>
 
     <div class="w-full max-w-md px-5">
@@ -46,17 +46,17 @@ const handleContactSupport = () => {
         <!-- Title -->
         <div>
           <h1 class="text-2xl font-bold text-[var(--ui-text)] mb-2">
-            Pagamento Cancelado
+            Payment Cancelled
           </h1>
           <p class="text-sm text-[var(--ui-text-muted)]">
-            Você cancelou o processo de pagamento. Nenhuma cobrança foi realizada.
+            You canceled the payment process. No charges were made.
           </p>
         </div>
 
         <!-- Info Box -->
         <div class="bg-[var(--ui-bg)] rounded-lg p-4 border border-[var(--ui-border)]">
           <p class="text-sm text-[var(--ui-text-muted)]">
-            Você pode tentar novamente quando estiver pronto. Se encontrar algum problema, entre em contato com nosso suporte.
+            You can try again when you're ready. If you encounter any issues, contact our support.
           </p>
         </div>
 
@@ -66,19 +66,19 @@ const handleContactSupport = () => {
             @click="handleRetry"
             class="w-full px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors text-sm"
           >
-            Tentar Novamente
+            Try Again
           </button>
           <button
             @click="handleContactSupport"
             class="w-full px-4 py-2.5 border border-[var(--ui-border)] text-[var(--ui-text)] rounded-lg font-medium hover:bg-[var(--ui-bg)] transition-colors text-sm"
           >
-            Contatar Suporte
+            Contact Support
           </button>
         </div>
 
         <!-- Help Text -->
         <p class="text-xs text-[var(--ui-text-muted)]">
-          Dúvidas? Veja nossa <a href="#" class="text-primary-600 hover:text-primary-700 underline">central de ajuda</a>.
+          Questions? See our <a href="#" class="text-primary-600 hover:text-primary-700 underline">help center</a>.
         </p>
       </div>
     </div>

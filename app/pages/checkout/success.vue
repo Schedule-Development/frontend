@@ -5,8 +5,8 @@ const router = useRouter()
 definePageMeta({ layout: false })
 
 useSeoMeta({
-  title: 'Confirmando pagamento...',
-  description: 'Aguardando confirmação da assinatura'
+  title: 'Confirming payment...',
+  description: 'Awaiting subscription confirmation'
 })
 
 const sessionId = computed(() => route.query.session_id as string)
@@ -85,10 +85,10 @@ onUnmounted(() => {
           </div>
           <div>
             <h1 class="text-2xl font-bold text-[var(--ui-text)] mb-2">
-              Aguardando confirmação...
+              Awaiting confirmation...
             </h1>
             <p class="text-sm text-[var(--ui-text-muted)]">
-              Estamos processando seu pagamento. Isso pode levar alguns segundos.
+              We're processing your payment. This may take a few seconds.
             </p>
           </div>
           <div class="flex flex-col gap-1">
@@ -107,35 +107,35 @@ onUnmounted(() => {
             <UIcon name="i-lucide-check-circle-2" class="w-8 h-8 text-green-600 dark:text-green-400" />
           </div>
           <div>
-            <h1 class="text-2xl font-bold text-[var(--ui-text)] mb-2">
-              Assinatura confirmada! 🎉
+              <h1 class="text-2xl font-bold text-[var(--ui-text)] mb-2">
+              Subscription confirmed! 🎉
             </h1>
             <p class="text-sm text-[var(--ui-text-muted)]">
-              Bem-vindo! Sua assinatura está ativa e pronta para uso.
+              Welcome! Your subscription is active and ready to use.
             </p>
           </div>
-          <div v-if="sessionData" class="bg-[var(--ui-bg)] rounded-lg p-4 text-left">
+              <div v-if="sessionData" class="bg-[var(--ui-bg)] rounded-lg p-4 text-left">
             <div class="text-xs text-[var(--ui-text-muted)] space-y-1">
               <div v-if="sessionData.email">
                 <strong>Email:</strong> {{ sessionData.email }}
               </div>
               <div v-if="sessionData.planTitle">
-                <strong>Plano:</strong> {{ sessionData.planTitle }}
+                <strong>Plan:</strong> {{ sessionData.planTitle }}
               </div>
               <div v-if="sessionData.cycle">
-                <strong>Período:</strong> {{ sessionData.cycle === 'yearly' ? 'Anual' : 'Mensal' }}
+                <strong>Period:</strong> {{ sessionData.cycle === 'yearly' ? 'Yearly' : 'Monthly' }}
               </div>
             </div>
           </div>
           <div class="flex flex-col gap-3">
             <p class="text-xs text-[var(--ui-text-muted)]">
-              Redirecionando para o dashboard em {{ redirectCountdown }}s...
+              Redirecting to the dashboard in {{ redirectCountdown }}s...
             </p>
             <button
               class="w-full px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors text-sm"
               @click="router.push('/login')"
             >
-              Entrar no Dashboard
+              Go to Dashboard
             </button>
           </div>
         </template>
@@ -147,17 +147,17 @@ onUnmounted(() => {
           </div>
           <div>
             <h1 class="text-2xl font-bold text-[var(--ui-text)] mb-2">
-              Algo deu errado
+              Something went wrong
             </h1>
             <p class="text-sm text-[var(--ui-text-muted)]">
-              Não foi possível confirmar o pagamento. Entre em contato com o suporte.
+              We couldn't confirm your payment. Please contact support.
             </p>
           </div>
           <button
             class="w-full px-4 py-2.5 border border-[var(--ui-border)] text-[var(--ui-text)] rounded-lg font-medium hover:bg-[var(--ui-bg)] transition-colors text-sm"
             @click="router.push('/pricing')"
           >
-            Voltar aos Planos
+            Back to Plans
           </button>
         </template>
 
