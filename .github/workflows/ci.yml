@@ -25,8 +25,8 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
+        # A flag --config.node-linker=hoisted ajuda o better-sqlite3 a encontrar os ficheiros binários
         run: pnpm install --no-frozen-lockfile --config.node-linker=hoisted
 
       - name: Build
         run: pnpm build
-
