@@ -30,3 +30,30 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build # Só corre se o build passar
+    if: github.ref == 'refs/heads/main' # Só corre no branch main
+    steps:
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Navegar para a pasta do projeto (AJUSTA O CAMINHO SE NECESSÁRIO)
+            cd /home/jurack/saas-landing-page || git clone https://github.com/Schedule-Development/saas-landing-page.git /home/jurack/saas-landing-page
+            cd /home/jurack/saas-landing-page
+            
+            # Atualizar código e dependências
+            git pull origin main
+            export COREPACK_ENABLE_STRICT=0
+            corepack enable
+            pnpm install --no-frozen-lockfile --config.node-linker=hoisted
+            
+            # Build e Restart (Assumindo que usas PM2 para manter o site online)
+            pnpm build
+            pm2 restart saas-app || pm2 start npm --name "saas-app" -- run start
