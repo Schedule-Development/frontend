@@ -24,8 +24,12 @@ const plans = computed<Plan[]>(() => pricePage.value?.plans ?? [])
 
 const getPrice = (plan: Plan) => isYearly.value ? plan.price.year : plan.price.month
 
-function selectPlan(plan: Plan) {
-  router.push(`/checkout?plan=${plan.title.toLowerCase()}&cycle=${isYearly.value ? '1' : '0'}`)
+function selectPlan(_plan: Plan) {
+  openGoogle()
+}
+
+function openGoogle() {
+  window.open('https://google.com', '_blank')
 }
 </script>
 
@@ -124,7 +128,7 @@ function selectPlan(plan: Plan) {
     <!-- Skip -->
     <button
       class="mt-8 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2 transition-colors"
-      @click="router.push('/pricing')"
+      @click="openGoogle()"
     >
       View full pricing details
     </button>
