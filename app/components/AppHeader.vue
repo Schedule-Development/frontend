@@ -21,7 +21,7 @@ const isScrolled = computed(() => isMounted.value && y.value > 20)
       zIndex: 50,
       display: 'flex',
       justifyContent: 'center',
-      paddingTop: isScrolled ? '16px' : '0px',
+      paddingTop: isScrolled ? '20px' : '0px',
       transition: 'padding-top 600ms cubic-bezier(0.22, 1, 0.36, 1)'
     }"
   >
